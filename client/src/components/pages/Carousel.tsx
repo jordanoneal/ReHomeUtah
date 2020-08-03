@@ -25,7 +25,7 @@ const items = [
   }
 ];
 
-const exampleCarousel = (props) => {
+const exampleCarousel = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
 
@@ -41,7 +41,7 @@ const exampleCarousel = (props) => {
     setActiveIndex(nextIndex);
   }
 
-  const goToIndex = (newIndex) => {
+  const goToIndex = (newIndex: number) => {
     if (animating) return;
     setActiveIndex(newIndex);
   }
