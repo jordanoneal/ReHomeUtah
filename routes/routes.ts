@@ -1,6 +1,5 @@
 const router = require("express").Router();
 import passport from "passport"
-// const passport = require("passport")
 
 // auth with google
 //   Use passport.authenticate() as route middleware to authenticate the
@@ -16,7 +15,7 @@ router.get("/google", passport.authenticate("google", {
 //   request.  If authentication fails, the user will be redirected back to the
 //   login page.  Otherwise, the primary route function function will be called,
 //   which, in this example, will redirect the user to the home page.
-router.get("/google/callback", (req: any, res: any) => {
+router.get("/google/callback", passport.authenticate("google"), (req: any, res: any) => {
     res.send("you reached the callback URI")
 })
 
