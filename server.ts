@@ -1,10 +1,23 @@
 import express from "express";
 import path from "path";
+import passport from "passport";
+
 const authRoutes = require("./routes/routes");
 const passportSetup = require("./config/passport");
 
 const PORT = process.env.PORT || 3001;
 const app = express();
+
+app.use(require('cookie-parser')());
+app.use(require('body-parser').urlencoded({ extended: true }));
+app.use(require('express-session')({
+  secret: 'keyboard cat',
+  resave: true,
+  saveUninitialized: true
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 // Define middleware here
 app.use("/auth", authRoutes)

@@ -2,6 +2,14 @@ import passport from "passport";
 const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
 const keys = require("./keys");
 
+passport.serializeUser(function (user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function (user, done) {
+  done(null, user);
+});
+
 passport.use(
   new GoogleStrategy(
     {
@@ -14,7 +22,7 @@ passport.use(
     (accessToken: any, refreshToken: any, profile: any, done: any) => {
       console.log("passport callback function fired");
       console.log(profile);
-      
+      done(null, profile);
     }
   )
 );
