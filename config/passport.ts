@@ -1,4 +1,6 @@
 import passport from "passport";
+import { Login } from "../models/login";
+import { User } from "../models/user";
 const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
 const keys = require("./keys");
 
@@ -19,10 +21,22 @@ passport.use(
       callbackURL: "/auth/google/callback",
     },
     // passport callback function
-    (accessToken: any, refreshToken: any, profile: any, done: any) => {
+    async (accessToken: any, refreshToken: any, profile: any, done: any) => {
       console.log("passport callback function fired");
       console.log(profile);
-      done(null, profile);
+      const user = await User.findOne({
+        email: profile.email,
+      });
+      // done(null, profile);
+      new Login({
+        provider: profile.provider,
+        providerUserId: profile.id,
+      });
+      new User({
+        email: profile.email,
+        firstName: profile.given_name,
+        lastName: profile.family_name,
+      });
     }
   )
 );

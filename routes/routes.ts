@@ -7,7 +7,7 @@ import passport from "passport"
 //   redirecting the user to google.com.  After authorization, Google
 //   will redirect the user back to this application at /auth/google/callback
 router.get("/google", passport.authenticate("google", {
-    scope: ["profile"]
+    scope: ["profile", "email"]
 }))
 
 // callback route for google to redirect to
