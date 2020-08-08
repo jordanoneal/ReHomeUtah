@@ -1,9 +1,31 @@
 import express from "express";
 import path from "path";
+import passport from "passport";
+import mongoose from "mongoose";
+
+const authRoutes = require("./routes/routes");
+const passportSetup = require("./config/passport");
+
 const PORT = process.env.PORT || 3001;
 const app = express();
 
+app.use(require("cookie-parser")());
+app.use(require("body-parser").urlencoded({ extended: true }));
+app.use(
+  require("express-session")({
+    secret: "keyboard cat",
+    resave: true,
+    saveUninitialized: true,
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/rehomeutah", {
+  useNewUrlParser: true,
+});
+
 // Define middleware here
+app.use("/auth", authRoutes);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // Serve up static assets (usually on heroku)

@@ -1,8 +1,10 @@
 import mongoose, { Schema, Document, Model } from "mongoose";
 import { IServices } from "../interfaces/services";
 
+export interface IServicesModel extends IServices, Document { };
+
 // export interface IServicesModel
-new Schema({
+export const ServicesSchema = new Schema<IServicesModel>({
     service: {
         type: String,
         required: true
@@ -12,26 +14,28 @@ new Schema({
         required: true
     },
     pricing: {
-        type: {
-            type: {
+        Options: [{
+            description: {
                 type: String,
                 required: true
             },
-            options: [{
-                description: {
-                    type: String,
-                    required: true
-                },
-                price: {
-                    type: Number,
-                    required: true
-                }
-            }],
+            price: {
+                type: Number,
+                required: true
+            }
+        }],
+        Incremental: {
             min: Number,
             max: Number,
             increment: Number,
             unitPrice: Number,
+        },
+        Flat: {
             price: Number
+        },
+        Included: {
+            description: String,
+            price: String
         }
     }
-})
+});

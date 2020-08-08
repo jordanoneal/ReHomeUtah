@@ -13,9 +13,14 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "resolveJsonModule": true,
+<<<<<<< HEAD
     "isolatedModules": true,
     "jsx": "react",
     "outDir": "out"
+=======
+    "isolatedModules": false,
+    "jsx": "react"
+>>>>>>> 7af36fe68a5be83e52fdf7d23fc9562e8ad68cb0
   },
   "exclude": [
     "client",

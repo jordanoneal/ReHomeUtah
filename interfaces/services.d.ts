@@ -1,34 +1,37 @@
 export interface IServices {
-    service: string,
-    explanation: string,
-    pricing: PricingType,
+    service: string
+    explanation: string
+    pricing: {
+        [propName: PricingType]: IOptionsPricing | IFlatPricing | IIncrementalPricing | IIncludedPricing,
+    }
 }
 
-export interface PricingType {
-    type: 'Options' | 'Incremental' | 'Flat' | 'Included',
-}
+export type PricingType = 'Options' | 'Incremental' | 'Flat' | 'Included'
 
-export interface IOptionsPricing extends PricingType {
-    type: 'Options',
-    options:  IServicePricingOption[],
+export interface IOptionsPricing {
+    options:  IServicePricingOption[]
 }
 
 export interface IServicePricingOption {
-    description: string;
-    price: string;
+    description: string
+    price: number
+    // Price may have to revert back to string
 }
 
 export interface IIncrementalPricing {
-    type: 'Incremental'
-    min: number,
-    max: number,
-    increment: number,
-    unitPrice: number,
+    min: number
+    max: number
+    increment: number
+    unitPrice: number
 }
 
 export interface IFlatPricing {
-    type: 'Flat'
-    price: number;
+    price: number
+}
+
+export interface IIncludedPricing {
+    description: string
+    price: string
 }
 
 // export interface Pricing {
