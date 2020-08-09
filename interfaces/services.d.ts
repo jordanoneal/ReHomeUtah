@@ -14,7 +14,7 @@ export interface IOptionsPricing {
 
 export interface IServicePricingOption {
     description: string
-    price: number
+    price: string
     // Price may have to revert back to string
 }
 

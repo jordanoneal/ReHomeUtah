@@ -20,7 +20,7 @@ export const ServicesSchema = new Schema<IServicesModel>({
                 required: true
             },
             price: {
-                type: Number,
+                type: String,
                 required: true
             }
         }],
@@ -39,3 +39,8 @@ export const ServicesSchema = new Schema<IServicesModel>({
         }
     }
 });
+
+export const Services = mongoose.model<IServicesModel>(
+    "Services",
+    ServicesSchema
+);
