@@ -11,7 +11,8 @@
     "install": "cd client && npm install",
     "tsc": "tsc",
     "build": "npm run tsc && cd client && npm run build",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "npm run build",
+    "seed": "npm run tsc && node out/scripts/seedDB.js"
   },
   "author": "",
   "license": "ISC",

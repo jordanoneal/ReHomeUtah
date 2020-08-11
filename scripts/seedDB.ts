@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
-const { Services } = require("../models");
+const { Services, IServicesModel } = require("../models/services");
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/rehomeutah", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/Rehome-Utah", {
   useNewUrlParser: true,
 });
 
@@ -243,14 +243,15 @@ const servicesSeed = [
   }
 ];
 
-// db.Services
-//   .remove({})
-//   .then(() => db.Services.collection.insertMany(servicesSeed))
-//   .then({ type: } => {
-//     console.log(`${data.result.n} Records Inserted`);
-//     process.exit(0);
-//   })
-//   .catch(err => {
-//     console.error(err);
-//     process.exit(1);
-//   });
+Services
+  .remove({})
+  .then(() => Services.collection.insertMany(servicesSeed))
+  .then((data: { result: { n: number; }; }) => {
+    console.log(`${data.result.n} Records Inserted`);
+    process.exit(0);
+  })
+  .catch((err: Error) => {
+    console.error(err);
+
+    process.exit(1);
+  });
