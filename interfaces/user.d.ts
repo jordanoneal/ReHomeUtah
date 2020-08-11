@@ -1,16 +1,18 @@
 export interface IUser {
-    firstName?: string
-    lastName?: string
-    email: string,
-    address?: string,
-    city?: string,
-    zipCode?: number,
-    phoneNumber?: string
-    referrer?: string
+  // modeled from Account info page
+  firstName?: string;
+  lastName?: string;
+  email: string;
+  address?: string;
+  city?: string;
+  zipCode?: number;
+  phoneNumber?: string;
+  referrer?: string;
 }
 
 export interface ILogin {
-    provider: string,
-    providerUserId?: string,
-    password?: string
+  // retrieved from google oauth except for password (password for local authentication?)
+  provider: string;
+  providerUserId?: string;
+  password?: string;
 }

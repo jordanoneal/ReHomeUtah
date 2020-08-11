@@ -4,6 +4,8 @@ import passport from "passport";
 import mongoose from "mongoose";
 
 const authRoutes = require("./routes/routes");
+const apiRoutes = require("./routes/apiRoutes");
+// associate google strategy wih passport object
 const passportSetup = require("./config/passport");
 
 const PORT = process.env.PORT || 3001;
@@ -18,16 +20,24 @@ app.use(
     saveUninitialized: true,
   })
 );
+
+// initialize passport
 app.use(passport.initialize());
 app.use(passport.session());
+
+// connect to mongodb
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/rehomeutah", {
   useNewUrlParser: true,
 });
 
-// Define middleware here
+// setup routes
 app.use("/auth", authRoutes);
+app.use("/api", apiRoutes);
+
+// Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));

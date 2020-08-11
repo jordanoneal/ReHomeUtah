@@ -14,7 +14,7 @@ export const UserSchema = new Schema<IUserModel>({
   email: {
     type: String,
     required: true,
-    index: true
+    index: true,
   },
   address: {
     type: String,
@@ -33,8 +33,5 @@ export const UserSchema = new Schema<IUserModel>({
   },
 });
 
-// model
-export const User: Model<IUserModel> = mongoose.model<IUserModel>(
-    "User",
-    UserSchema
-)
+// User model
+export const User = mongoose.model<IUserModel>("User", UserSchema);
