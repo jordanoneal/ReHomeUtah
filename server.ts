@@ -4,30 +4,48 @@ import passport from "passport";
 import mongoose from "mongoose";
 
 const authRoutes = require("./routes/routes");
+const apiRoutes = require("./routes/apiRoutes");
+// associate google strategy wih passport object
 const passportSetup = require("./config/passport");
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 
 const PORT = process.env.PORT || 3001;
 const app = express();
 
 app.use(require("cookie-parser")());
 app.use(require("body-parser").urlencoded({ extended: true }));
-app.use(
-  require("express-session")({
-    secret: "keyboard cat",
-    resave: true,
-    saveUninitialized: true,
-  })
-);
-app.use(passport.initialize());
-app.use(passport.session());
+
+// connect to mongodb
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/rehomeutah", {
   useNewUrlParser: true,
 });
 
-// Define middleware here
-app.use("/auth", authRoutes);
-app.use(express.urlencoded({ extended: true }));
+mongoose.Promise = global.Promise;
+const db = mongoose.connection
+app.use(
+  session({
+    secret: "keyboard cat",
+    resave: true,
+    saveUninitialized: true,
+    store: new MongoStore({ mongooseConnection: db })
+  })
+);
+
+// initialize passport
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(express.json());
+
+// setup routes
+app.use("/auth", authRoutes);
+app.use("/api", apiRoutes);
+
+// Define middleware here
+app.use(express.urlencoded({ extended: true }));
+console.log("different")
+
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
