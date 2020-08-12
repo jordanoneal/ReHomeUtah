@@ -7,17 +7,28 @@ const authRoutes = require("./routes/routes");
 const apiRoutes = require("./routes/apiRoutes");
 // associate google strategy wih passport object
 const passportSetup = require("./config/passport");
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 
 const PORT = process.env.PORT || 3001;
 const app = express();
 
 app.use(require("cookie-parser")());
 app.use(require("body-parser").urlencoded({ extended: true }));
+
+// connect to mongodb
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/rehomeutah", {
+  useNewUrlParser: true,
+});
+
+mongoose.Promise = global.Promise;
+const db = mongoose.connection
 app.use(
-  require("express-session")({
+  session({
     secret: "keyboard cat",
     resave: true,
     saveUninitialized: true,
+    store: new MongoStore({ mongooseConnection: db })
   })
 );
 
@@ -25,10 +36,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-// connect to mongodb
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/rehomeutah", {
-  useNewUrlParser: true,
-});
+app.use(express.json());
 
 // setup routes
 app.use("/auth", authRoutes);
@@ -36,7 +44,7 @@ app.use("/api", apiRoutes);
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+console.log("different")
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {

@@ -1,20 +1,8 @@
 import React, { useEffect } from "react";
-import { useRecoilState } from "recoil";
-import { userState, User } from "../recoil/userAtom";
-import API from "../utils/API";
+import useUserState from "../utils/useUserState";
 
 export default function DummyHome() {
-  const [user, setUser] = useRecoilState(userState);
-
-  useEffect(() => {
-    getUser();
-  }, []);
-
-  const getUser = async () => {
-    const { data } = await API.getUser();
-    setUser(new User(data));
-  };
-
+  const [user] = useUserState();
   useEffect(() => console.log(user), [user]);
 
   return (

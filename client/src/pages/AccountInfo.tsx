@@ -3,37 +3,43 @@ import axios from "axios";
 import { userState, User } from "../recoil/userAtom";
 import { useRecoilState } from "recoil";
 import API from "../utils/API";
+import useUserState from "../utils/useUserState";
 
 function AccountInfo() {
-  // const [user, setUser] = useRecoilState(userState);
+  const [user, postUser] = useUserState();
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [address, setAddress] = useState("");
+  const [zipCode, setZipCode] = useState("");
+  const [refferer, setRefferer] = useState("");
+  const [city, setCity] = useState("");
+
   // useEffect(() => console.log(user), [user]);
 
-  const [user, setUser] = useRecoilState(userState);
-
-  useEffect(() => {
-    getUser();
-  }, []);
-
-  const getUser = async () => {
-    const { data } = await API.getUser();
-    setUser(new User(data));
-  };
-
-  useEffect(() => console.log(user), [user]);
+  useEffect(()=> {
+    if(user) {
+      setFirstName(user.firstName || "")
+      setLastName(user.lastName || "")
+      setAddress(user.address || "")
+      setZipCode(user.zipCode || "")
+      setRefferer(user.referrer || "")
+      setCity(user.city || "")
+    }
+  }, [user])
 
   const submitAccountInfo = (event: any) => {
     event.preventDefault();
-    axios({
-      method: "POST",
-      data: user,
-      url: "/api/saveuser",
-    })
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    postUser(new User({
+      _id: user!._id,
+      firstName: firstName,
+      email: user!.email,
+      lastName: lastName,
+      address: address,
+      zipCode: zipCode,
+      referrer: refferer,
+      city: city
+
+    }))
   };
 
   return (
@@ -46,9 +52,9 @@ function AccountInfo() {
           placeholder="first name"
           name="firstName"
           onChange={({ target: { value } }) =>
-            setUser((prevState) => new User({ ...prevState, firstName: value }))
+            setFirstName(value)
           }
-          value={user.firstName}
+          value={firstName}
         />
       </div>
       <div className="form-group">
@@ -59,9 +65,9 @@ function AccountInfo() {
           placeholder="last name"
           name="lastName"
           onChange={({ target: { value } }) =>
-            setUser((prevState) => new User({ ...prevState, lastName: value }))
+            setLastName(value)
           }
-          value={user.lastName}
+          value={lastName}
         />
       </div>
       <div className="form-group">
@@ -72,7 +78,7 @@ function AccountInfo() {
           placeholder="street address"
           name="streetAddress"
           onChange={({ target: { value } }) =>
-            setUser((prevState) => new User({ ...prevState, address: value }))
+            setAddress(value)
           }
         />
       </div>
@@ -84,7 +90,7 @@ function AccountInfo() {
           placeholder="city"
           name="city"
           onChange={({ target: { value } }) =>
-            setUser((prevState) => new User({ ...prevState, city: value }))
+            setCity(value)
           }
         />
       </div>
@@ -96,7 +102,7 @@ function AccountInfo() {
           placeholder="zip code"
           name="zipCode"
           onChange={({ target: { value } }) =>
-            setUser((prevState) => new User({ ...prevState, zipCode: value }))
+            setZipCode(value)
           }
         />
       </div>
@@ -108,10 +114,7 @@ function AccountInfo() {
           placeholder="email"
           name="email"
           readOnly
-          onChange={({ target: { value } }) =>
-            setUser((prevState) => new User({ ...prevState, email: value }))
-          }
-          value={user.email}
+          value={user ? user.email : ""}
         />
       </div>
 
