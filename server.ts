@@ -2,9 +2,11 @@ import express from "express";
 import path from "path";
 import passport from "passport";
 import mongoose from "mongoose";
+import servicesController from "./controllers/servicesController";
 
 const authRoutes = require("./routes/routes");
 const apiRoutes = require("./routes/apiRoutes");
+
 // associate google strategy wih passport object
 const passportSetup = require("./config/passport");
 const session = require('express-session');
@@ -41,6 +43,7 @@ app.use(express.json());
 // setup routes
 app.use("/auth", authRoutes);
 app.use("/api", apiRoutes);
+app.use(servicesController);
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
