@@ -80,6 +80,7 @@ function AccountInfo() {
           onChange={({ target: { value } }) =>
             setAddress(value)
           }
+          value={address}
         />
       </div>
       <div className="form-group">
@@ -92,6 +93,7 @@ function AccountInfo() {
           onChange={({ target: { value } }) =>
             setCity(value)
           }
+          value={city}
         />
       </div>
       <div className="form-group">
@@ -104,6 +106,7 @@ function AccountInfo() {
           onChange={({ target: { value } }) =>
             setZipCode(value)
           }
+          value={zipCode}
         />
       </div>
       <div className="form-group">
