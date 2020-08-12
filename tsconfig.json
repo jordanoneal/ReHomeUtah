@@ -14,9 +14,11 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": false,
-    "jsx": "react"
+    "jsx": "react",
+    "outDir": "out"
   },
   "exclude": [
-    "client"
+    "client",
+    "out"
   ]
 }
