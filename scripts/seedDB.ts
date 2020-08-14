@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const { Services, IServicesModel } = require("../models/services");
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/Rehome-Utah", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/rehomeutah", {
   useNewUrlParser: true,
 });
 
