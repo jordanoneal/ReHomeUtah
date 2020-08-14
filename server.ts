@@ -35,6 +35,17 @@ app.use(
   })
 );
 
+var forceSsl = function (req: express.Request, res: express.Response, next: () => void ) {
+  if (req.headers['x-forwarded-proto'] !== 'https') {
+      return res.redirect(['https://', req.get('Host'), req.url].join(''));
+  }
+  return next();
+};
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(forceSsl);
+}
+
 // initialize passport
 app.use(passport.initialize());
 app.use(passport.session());
