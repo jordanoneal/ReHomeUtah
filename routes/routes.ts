@@ -21,7 +21,8 @@ router.get(
 // auth logout
 router.get("/logout", function (req: any, res: any) {
   req.logout();
-  res.redirect("/");
+  // res.redirect("/login");
+  res.send("logged out")
 });
 
 module.exports = router;
