@@ -3,6 +3,7 @@ import path from "path";
 import passport from "passport";
 import mongoose from "mongoose";
 import routes from "./routes";
+require("dotenv").config();
 
 const authRoutes = require("./routes/routes");
 const apiRoutes = require("./routes/apiRoutes");
