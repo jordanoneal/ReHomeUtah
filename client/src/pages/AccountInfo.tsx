@@ -16,30 +16,31 @@ function AccountInfo() {
 
   // useEffect(() => console.log(user), [user]);
 
-  useEffect(()=> {
-    if(user) {
-      setFirstName(user.firstName || "")
-      setLastName(user.lastName || "")
-      setAddress(user.address || "")
-      setZipCode(user.zipCode || "")
-      setRefferer(user.referrer || "")
-      setCity(user.city || "")
+  useEffect(() => {
+    if (user) {
+      setFirstName(user.firstName || "");
+      setLastName(user.lastName || "");
+      setAddress(user.address || "");
+      setZipCode(user.zipCode || "");
+      setRefferer(user.referrer || "");
+      setCity(user.city || "");
     }
-  }, [user])
+  }, [user]);
 
   const submitAccountInfo = (event: any) => {
     event.preventDefault();
-    postUser(new User({
-      _id: user!._id,
-      firstName: firstName,
-      email: user!.email,
-      lastName: lastName,
-      address: address,
-      zipCode: zipCode,
-      referrer: refferer,
-      city: city
-
-    }))
+    postUser(
+      new User({
+        _id: user!._id,
+        firstName: firstName,
+        email: user!.email,
+        lastName: lastName,
+        address: address,
+        zipCode: zipCode,
+        referrer: refferer,
+        city: city,
+      })
+    );
   };
 
   return (
@@ -51,9 +52,7 @@ function AccountInfo() {
           className="form-control"
           placeholder="first name"
           name="firstName"
-          onChange={({ target: { value } }) =>
-            setFirstName(value)
-          }
+          onChange={({ target: { value } }) => setFirstName(value)}
           value={firstName}
         />
       </div>
@@ -64,9 +63,7 @@ function AccountInfo() {
           className="form-control"
           placeholder="last name"
           name="lastName"
-          onChange={({ target: { value } }) =>
-            setLastName(value)
-          }
+          onChange={({ target: { value } }) => setLastName(value)}
           value={lastName}
         />
       </div>
@@ -77,9 +74,7 @@ function AccountInfo() {
           className="form-control"
           placeholder="street address"
           name="streetAddress"
-          onChange={({ target: { value } }) =>
-            setAddress(value)
-          }
+          onChange={({ target: { value } }) => setAddress(value)}
           value={address}
         />
       </div>
@@ -90,9 +85,7 @@ function AccountInfo() {
           className="form-control"
           placeholder="city"
           name="city"
-          onChange={({ target: { value } }) =>
-            setCity(value)
-          }
+          onChange={({ target: { value } }) => setCity(value)}
           value={city}
         />
       </div>
@@ -103,9 +96,7 @@ function AccountInfo() {
           className="form-control"
           placeholder="zip code"
           name="zipCode"
-          onChange={({ target: { value } }) =>
-            setZipCode(value)
-          }
+          onChange={({ target: { value } }) => setZipCode(value)}
           value={zipCode}
         />
       </div>
