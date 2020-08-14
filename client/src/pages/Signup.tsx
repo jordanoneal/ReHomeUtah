@@ -10,7 +10,7 @@ export default function Signup() {
     }
     return (
         <div>
-            <a onClick={handleClick}>Sign In with Google</a>
+            <a href="#" onClick={handleClick}>Sign In with Google</a>
         </div>
     )
 }

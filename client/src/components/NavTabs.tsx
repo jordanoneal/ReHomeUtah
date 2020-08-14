@@ -54,5 +54,3 @@ const Example = () => {
     </Navbar>
   );
 }
-
-export default Example;   

@@ -10,3 +10,5 @@ export const OrderConfirmation:React.FC = (props) => {
         </div>
     )
 }
+
+export default OrderConfirmation;
