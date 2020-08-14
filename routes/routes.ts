@@ -15,7 +15,7 @@ router.get(
   "/google/callback",
   passport.authenticate("google", { failureRedirect: "/login" }),
   function (req: any, res: any) {
-    res.send("<script>window.close()</script>");
+    res.send("<script>window.opener.postMessage('auth popup closed', '*');window.close();</script>");
   }
 );
 
