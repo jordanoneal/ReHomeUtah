@@ -9,13 +9,7 @@ router.get(
   })
 );
 
-// // callback route for google to redirect to
-// router.get("/google/callback", passport.authenticate("google"), (req: any, res: any) => {
-//     res.send("you reached the callback URI")
-// })
-
-// callback route that will close the popup window
-// parent window will redirect to "/" when user successfully signs in
+// callback route that will close the popup window and redirect parent window to "/" when user signs in
 router.get(
   "/google/callback",
   passport.authenticate("google", { failureRedirect: "/login" }),
@@ -23,5 +17,11 @@ router.get(
     res.send("<script>window.close()</script>");
   }
 );
+
+// auth logout
+router.get("/logout", function (req: any, res: any) {
+  req.logout();
+  res.redirect("/");
+});
 
 module.exports = router;

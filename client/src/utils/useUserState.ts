@@ -3,12 +3,18 @@ import { useRecoilState } from "recoil";
 import { userState, User } from "../recoil/userAtom";
 import API from "../utils/API";
 
-export default function useUserState(): [User | undefined, (user:User) => void]{
+export default function useUserState(): [
+  User | undefined,
+  (user: User) => void,
+  () => void,
+  () => void
+] {
   const [user, setUser] = useRecoilState(userState);
 
   const getUser = useCallback(async () => {
     const { data } = await API.getUser();
-    setUser(new User(data));
+    console.log(data);
+    setUser(data && new User(data));
   }, [setUser]);
 
   useEffect(() => {
@@ -25,5 +31,15 @@ export default function useUserState(): [User | undefined, (user:User) => void]{
     [getUser]
   );
 
-  return [user, postUser];
+  const login = useCallback(async () => {
+    const { data } = await API.logIn();
+    data && getUser()
+  }, [getUser]);
+
+  const logout = useCallback(async () => {
+    await API.logOut();
+    setUser(undefined);
+  }, [setUser]);
+
+  return [user, postUser, login, logout];
 }
