@@ -38,8 +38,8 @@ export default function useUserState(): [
 
   const logout = useCallback(async () => {
     await API.logOut();
-    setUser(undefined);
-  }, [setUser]);
+    getUser();
+  }, [getUser]);
 
   return [user, postUser, login, logout];
 }
