@@ -2,7 +2,8 @@ import express from "express";
 import path from "path";
 import passport from "passport";
 import mongoose from "mongoose";
-import servicesController from "./controllers/servicesController";
+import routes from "./routes";
+require("dotenv").config();
 
 const authRoutes = require("./routes/routes");
 const apiRoutes = require("./routes/apiRoutes");
@@ -43,23 +44,23 @@ app.use(express.json());
 // setup routes
 app.use("/auth", authRoutes);
 app.use("/api", apiRoutes);
-app.use(servicesController);
+app.use(routes);
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 console.log("different")
 
 // Serve up static assets (usually on heroku)
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-}
+// if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../client/build")));
+// }
 
 // Define API routes here
 
 // Send every other request to the React app
 // Define any API routes before this runs
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+  res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
 
 app.listen(PORT, () => {

@@ -4,3 +4,4 @@ node_modules
 !client/**/*.js
 ./config/keys.ts
 out
+.env

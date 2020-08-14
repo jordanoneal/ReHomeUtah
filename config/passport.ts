@@ -4,7 +4,7 @@ import { User, IUserModel } from "../models/user";
 import { Schema } from "mongoose";
 
 const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
-const keys = require("./keys");
+// const keys = require("./keys");
 
 passport.serializeUser(function (user: IUserModel, done) {
   done(null, user._id);
@@ -19,8 +19,8 @@ passport.use(
   new GoogleStrategy(
     {
       // options for the google strat
-      clientID: keys.google.clientID,
-      clientSecret: keys.google.clientSecret,
+      clientID: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       callbackURL: "/auth/google/callback",
     },
     // passport callback function
