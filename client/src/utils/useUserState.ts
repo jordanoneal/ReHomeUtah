@@ -32,9 +32,12 @@ export default function useUserState(): [
   );
 
   const login = useCallback(async () => {
-    const { data } = await API.logIn();
-    data && getUser()
-  }, [getUser]);
+    const strWindowFeatures = 'toolbar=no, menubar=no, width=600, height=700, top=100, left=100';
+    const popupWindow = window.open("/auth/google", "_blank", strWindowFeatures);
+    popupWindow!.onclose=() => {
+      getUser()
+    }
+}, [getUser]);
 
   const logout = useCallback(async () => {
     await API.logOut();
