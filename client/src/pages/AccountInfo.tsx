@@ -4,6 +4,7 @@ import { userState, User } from "../recoil/userAtom";
 import { useRecoilState } from "recoil";
 import API from "../utils/API";
 import useUserState from "../utils/useUserState";
+import "../styles/AccountInfo.css"
 
 function AccountInfo() {
   const [user, postUser] = useUserState();
@@ -112,7 +113,7 @@ function AccountInfo() {
         />
       </div>
 
-      <div className="form-group">
+      {/* <div className="form-group">
         <label htmlFor="formGroupExmapleInput">
           Were you referred by a past client?
         </label>
@@ -135,9 +136,9 @@ function AccountInfo() {
         <label className="form-check-label" htmlFor="defaultCheck2">
           No
         </label>
-      </div>
-      <button className="btn btn-sucess" type="submit">
-        Submit info
+      </div> */}
+      <button className="btn" type="submit">
+        Submit
       </button>
     </form>
   );

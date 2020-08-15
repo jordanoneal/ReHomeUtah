@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="App">
       <RecoilRoot>
-        {/* < DummyNav /> */}
+        < DummyNav />
         <Router>
           <Switch>
             {/* <Route exact path="/" component={DummyHome} />
