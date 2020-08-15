@@ -42,7 +42,7 @@ export const BuildYourPlan: React.FC = (props) => {
 
               <ListGroupItem id="TooltipExample"><CustomInput type="checkbox" check={false} > Professional Photos
               <Tooltip placement="right" isOpen={tooltipOpen} target="TooltipExample" toggle={toggleTooltip}>
-        Hello world!
+                  Hello world!
       </Tooltip></CustomInput></ListGroupItem>
               <ListGroupItem>Market Analysis</ListGroupItem>
               <ListGroupItem>Document Management</ListGroupItem>
