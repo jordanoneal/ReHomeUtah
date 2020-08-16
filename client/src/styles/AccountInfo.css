@@ -1,19 +1,19 @@
 form {
-    width: 100%;
-    max-width: 330px;
-    padding: 15px;
-    margin: auto;
-    height: 100%;
-    background-color: grey;
-    border-style: solid;
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+  height: 100%;
+  background-color: grey;
+  border-style: solid;
 }
 
 label {
-    color: white;
+  color: white;
 }
 
 .form-control {
-    border-style: solid;
-    border: black;
-    border-width: 5px;
+  border-style: solid;
+  border: black;
+  border-width: 5px;
 }

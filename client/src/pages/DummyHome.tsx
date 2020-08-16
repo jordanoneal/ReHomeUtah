@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import useUserState from "../utils/useUserState";
 import { Redirect } from "react-router-dom";
 import API from "../utils/API";
-import "../styles/DummyHome.css"
+import "../styles/DummyHome.css";
 
 export default function DummyHome() {
   const [user, postUser, login, logout] = useUserState();

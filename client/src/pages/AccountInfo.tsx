@@ -4,7 +4,7 @@ import { userState, User } from "../recoil/userAtom";
 import { useRecoilState } from "recoil";
 import API from "../utils/API";
 import useUserState from "../utils/useUserState";
-import "../styles/AccountInfo.css"
+import "../styles/AccountInfo.css";
 
 function AccountInfo() {
   const [user, postUser] = useUserState();

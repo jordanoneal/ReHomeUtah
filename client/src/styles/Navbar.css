@@ -1,14 +1,13 @@
-.navbar-brand{
-    height: 100px;
-    width: 300px;
+.navbar-brand {
+  height: 100px;
+  width: 300px;
 }
 
-.navbar{
-    font-family: "Montserrat";
-    background-color: white;
-       
+.navbar {
+  font-family: "Montserrat";
+  background-color: white;
 }
 
 a {
-    color: #000000;
+  color: #000000;
 }

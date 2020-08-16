@@ -1,46 +1,48 @@
 import mongoose, { Schema, Document, Model } from "mongoose";
 import { IServices } from "../interfaces/services";
 
-export interface IServicesModel extends IServices, Document { };
+export interface IServicesModel extends IServices, Document {}
 
 // export interface IServicesModel
 export const ServicesSchema = new Schema<IServicesModel>({
-    service: {
-        type: String,
-        required: true
-    },
-    explanation: {
-        type: String,
-        required: true
-    },
-    pricing: {
-        Options: [{
-            description: {
-                type: String,
-                required: true
-            },
-            price: {
-                type: String,
-                required: true
-            }
-        }],
-        Incremental: {
-            min: Number,
-            max: Number,
-            increment: Number,
-            unitPrice: Number,
+  service: {
+    type: String,
+    required: true,
+  },
+  explanation: {
+    type: String,
+    required: true,
+  },
+  pricing: {
+    Options: [
+      {
+        description: {
+          type: String,
+          required: true,
         },
-        Flat: {
-            price: Number
+        price: {
+          type: String,
+          required: true,
         },
-        Included: {
-            description: String,
-            price: String
-        }
-    }
+      },
+    ],
+    Incremental: {
+      min: Number,
+      max: Number,
+      increment: Number,
+      unitPrice: Number,
+    },
+    Flat: {
+      price: Number,
+    },
+    Included: {
+      description: String,
+      price: String,
+    },
+  },
 });
 
 export const Services = mongoose.model<IServicesModel>(
-    "Services",
-    ServicesSchema
+  "Services",
+  ServicesSchema
 );
