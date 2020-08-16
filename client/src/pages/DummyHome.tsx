@@ -27,7 +27,6 @@ export default function DummyHome() {
 
   return (
     <div>
-      <h1>DUMMY HOME PAGE</h1>
       <h2>Welcome {firstName}</h2>
       {/* <button onClick={!user ? login:logout} type="button" className={(user) ? "btn-danger" : "btn-success"}>{(user) ? "Logout" : "Login"}</button> */}
     </div>
