@@ -50,7 +50,14 @@ export default function DummySellersDetails() {
     <div>
       <form onSubmit={handleSumbmit}>
         <div className="form-group">
-          <label>When do you need to sell by</label>
+          <label>How long have you owned this property?</label>
+          <div className="form-inline">
+          <input type="text" className="form-control mb-2 mr-sm-2" placeholder="years"></input>
+          <input type="text" className="form-control mb-2 mr-sm-2" placeholder="months"></input>
+          </div>
+        </div>
+        <div className="form-group">
+          <label>When do you need to sell by?</label>
           <input
             type="date"
             onChange={(event) => setSellBy(event.target.value)}
