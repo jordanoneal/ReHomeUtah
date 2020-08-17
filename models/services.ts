@@ -5,7 +5,7 @@ export interface IServicesModel extends IServices, Document { };
 
 // export interface IServicesModel
 export const ServicesSchema = new Schema<IServicesModel>({
-    service: {
+    serviceName: {
         type: String,
         required: true
     },

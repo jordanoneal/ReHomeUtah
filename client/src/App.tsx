@@ -3,10 +3,11 @@ import logo from "./logo.svg";
 import "./App.css";
 import Signup from "./pages/Signup";
 import AccountInfo from "./pages/AccountInfo";
-import DummyHome from "./pages/DummyHome";
-import DummyNav from "./components/DummyNav";
+import DummyHome from "./pages/Home";
+// import DummyNav from "./components/DummyNav";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { RecoilRoot } from "recoil";
+import { BuildYourPlan } from "./pages/BuildYourPan";
 
 function App() {
   return (
@@ -26,6 +27,9 @@ function App() {
             </Route>
             <Route exact path="/accountinfo">
               <AccountInfo />
+            </Route>
+            <Route exact path="/buildyourplan">
+              <BuildYourPlan></BuildYourPlan>
             </Route>
           </Switch>
         </Router>

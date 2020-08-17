@@ -1,16 +1,17 @@
 export interface IServices {
-    service: string
+    serviceName: string
     explanation: string
     pricing: {
-        [propName: PricingType]: IOptionsPricing | IFlatPricing | IIncrementalPricing | IIncludedPricing,
+        Included? : IIncludedPricing
+        Options? : IOptionsPricing
+        Incremental? : IIncrementalPricing
+        Flat? : IFlatPricing
     }
 }
 
 export type PricingType = 'Options' | 'Incremental' | 'Flat' | 'Included'
 
-export interface IOptionsPricing {
-    options:  IServicePricingOption[]
-}
+export type IOptionsPricing = IServicePricingOption[];
 
 export interface IServicePricingOption {
     description: string

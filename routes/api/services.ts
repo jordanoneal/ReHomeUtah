@@ -4,8 +4,14 @@ const router = express.Router();
 
 // public path = "/services";
 
-router.route("/").get(servicesController.findAll);
-router.route("/:id").get(servicesController.findById);
+router.route("/")
+    .get(servicesController.findAll)
+    .post(servicesController.create);
+
+router.route("/:id")
+    .get(servicesController.findById)
+    .put(servicesController.update)
+    .delete(servicesController.remove);
 
 export default router;
 
