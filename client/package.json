@@ -21,6 +21,7 @@
     "react-native-check-box": "^2.1.7",
     "react-scripts": "3.4.1",
     "reactstrap": "^8.5.1",
+    "recoil": "0.0.10",
     "typescript": "~3.7.2"
   },
   "scripts": {

@@ -1,17 +1,34 @@
 // import React from 'react';
-import React, { useState } from 'react';
-import { Jumbotron, Container, ListGroup, ListGroupItem, Row, Col, Card, CardImg, CardText, CardBody, Dropdown, DropdownToggle, DropdownMenu, DropdownItem, CustomInput, Tooltip } from 'reactstrap';
-
-
-
+import React, { useState } from "react";
+import {
+  Jumbotron,
+  Container,
+  ListGroup,
+  ListGroupItem,
+  Row,
+  Col,
+  Card,
+  CardImg,
+  CardText,
+  CardBody,
+  Dropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+  Button,
+  UncontrolledPopover,
+  PopoverHeader,
+  PopoverBody,
+  CustomInput
+} from "reactstrap";
 
 export const BuildYourPlan: React.FC = (props) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const toggle = () => setDropdownOpen(prevState => !prevState);
+  const toggle = () => setDropdownOpen((prevState) => !prevState);
 
-  const [tooltipOpen, setTooltipOpen] = useState(false);
+  // const [tooltipOpen, setTooltipOpen] = useState(false);
 
-  const toggleTooltip = () => setTooltipOpen(!tooltipOpen);
+  // const toggleTooltip = () => setTooltipOpen(!tooltipOpen);
 
   // const [dropdown, setDropdown] = React.useState<string>();
   // const [items, setItems] = React.useState<>([])
@@ -32,7 +49,6 @@ export const BuildYourPlan: React.FC = (props) => {
         <Col xs="6">
           {/* <Container classname="themed-container"> */}
           <Container className="themed-container" fluid="sm">
-
             <ListGroup>
               {/* {items.map(service => <ListGroupItem>
                 <CustomInput type="checkbox" checked={service.included} disabled={service.included}> 
@@ -40,17 +56,131 @@ export const BuildYourPlan: React.FC = (props) => {
                 </CustomInput>
               </ListGroupItem>)} */}
 
-              <ListGroupItem id="TooltipExample"><CustomInput type="checkbox" check={false} > Professional Photos
+              {/* <ListGroupItem id="TooltipExample"><CustomInput type="checkbox" check={false} > Professional Photos
               <Tooltip placement="right" isOpen={tooltipOpen} target="TooltipExample" toggle={toggleTooltip}>
                   Hello world!
-      </Tooltip></CustomInput></ListGroupItem>
-              <ListGroupItem>Market Analysis</ListGroupItem>
-              <ListGroupItem>Document Management</ListGroupItem>
-              <ListGroupItem>Present/Interpret Offers</ListGroupItem>
-              <ListGroupItem>Transaction Cordination</ListGroupItem>
-              <ListGroupItem>On call support</ListGroupItem>
-              <ListGroupItem>Lighted Yard Sign</ListGroupItem>
-              <ListGroupItem>Open Houses</ListGroupItem>
+      </Tooltip></CustomInput></ListGroupItem> */}
+              <ListGroupItem>
+              <CustomInput type="checkbox" id="exampleCustomCheckbox" check={true} />
+                <Button color="white" id="UncontrolledPopover" type="button">
+                  Market Analysis
+                </Button>
+                <UncontrolledPopover
+                  placement="bottom"
+                  target="UncontrolledPopover"
+                >
+                  <PopoverHeader>Included In 2% Selling Price</PopoverHeader>
+                  <PopoverBody>
+                    Pricing your home correctly is crucial. No ifs, ands or
+                    buts. We do a full-market analysis around your property's
+                    criteria to ensure your home is priced right.
+                  </PopoverBody>
+                </UncontrolledPopover>
+              </ListGroupItem>
+
+              <ListGroupItem>
+              <CustomInput type="checkbox" id="exampleCustomCheckbox" disabled checked={true} />
+                <Button
+                  color="white"
+                  id="UncontrolledPopoverDocumentManagement"
+                  type="button"
+                >
+                  Document Management
+                </Button>
+                <UncontrolledPopover
+                  placement="bottom"
+                  target="UncontrolledPopoverDocumentManagement"
+                >
+                  <PopoverHeader>Included In 2% Selling Price</PopoverHeader>
+                  <PopoverBody>
+                    Nobody likes paperwork. We'll take care of it for you.{" "}
+                  </PopoverBody>
+                </UncontrolledPopover>
+              </ListGroupItem>
+
+              <ListGroupItem>
+              <CustomInput type="checkbox" id="exampleCustomCheckbox" disabled checked={true} />
+                <Button color="white" id="UncontrolledPopoverPresentOffers" type="button">
+                  Present/Interpret Offers
+                </Button>
+                <UncontrolledPopover
+                  placement="bottom"
+                  target="UncontrolledPopoverPresentOffers"
+                >
+                  <PopoverHeader>Included In 2% Selling Price</PopoverHeader>
+                  <PopoverBody>
+                    We’re in your corner, and will make you a savvy homeseller,
+                    giving you confidence during your negotiations
+                  </PopoverBody>
+                </UncontrolledPopover>
+              </ListGroupItem>
+
+              <ListGroupItem>
+              <CustomInput type="checkbox" id="exampleCustomCheckbox" disabled checked={true} />
+                <Button color="white" id="UncontrolledPopoverTransaction" type="button">
+                  Transaction Cordination
+                </Button>
+                <UncontrolledPopover
+                  placement="bottom"
+                  target="UncontrolledPopoverTransaction"
+                >
+                  <PopoverHeader>Included In 2% Selling Price</PopoverHeader>
+                  <PopoverBody>
+                    There are a lot people involved in a Real Estate transaction
+                    (title representitives, lenders, inspectors, etc). We
+                    coordinate with them so you don't have to.
+                  </PopoverBody>
+                </UncontrolledPopover>
+              </ListGroupItem>
+
+              <ListGroupItem>
+              <CustomInput type="checkbox" id="exampleCustomCheckbox" disabled checked={true} />
+              <Button color="white" id="UncontrolledPopoverOnCallSupport" type="button">
+                    On call support
+                </Button>
+                <UncontrolledPopover
+                  placement="bottom"
+                  target="UncontrolledPopoverOnCallSupport"
+                >
+                  <PopoverHeader>Included In 2% Selling Price</PopoverHeader>
+                  <PopoverBody>
+                  Call me, maybe?
+                  </PopoverBody>
+                </UncontrolledPopover>
+              </ListGroupItem>
+
+              <ListGroupItem>
+              <CustomInput type="checkbox" id="exampleCustomCheckbox" disabled checked={true} />
+              <Button color="white" id="UncontrolledPopoverLighted" type="button">
+                  Lighted Yard Sign
+                </Button>
+                <UncontrolledPopover
+                  placement="bottom"
+                  target="UncontrolledPopoverLighted"
+                >
+                  <PopoverHeader>Included In 2% Selling Price</PopoverHeader>
+                  <PopoverBody>
+                  Our yard signs have solar-powered lights that get the night crowd's attention.  
+                  </PopoverBody>
+                </UncontrolledPopover>
+              </ListGroupItem>
+
+              <ListGroupItem>
+              <CustomInput type="checkbox" id="exampleCustomCheckbox" disabled checked={true} />
+              <Button color="white" id="UncontrolledPopoverOpenHouses" type="button">
+                  Open Houses
+                </Button>
+                <UncontrolledPopover
+                  placement="bottom"
+                  target="UncontrolledPopoverOpenHouses"
+                >
+                  <PopoverHeader>Included In 2% Selling Price</PopoverHeader>
+                  <PopoverBody>
+                  We prepare days in advance for our massive open houses. They’re basically giant house parties — but you're not invited... sorry.
+                  </PopoverBody>
+                </UncontrolledPopover>
+              </ListGroupItem>
+
             </ListGroup>
           </Container>
         </Col>
@@ -58,9 +188,16 @@ export const BuildYourPlan: React.FC = (props) => {
         <Col xs="6">
           <div>
             <Card>
-              <CardImg top width="100%" src="./assets/images/sellingprice.jpeg" alt="Card image cap" />
+              <CardImg
+                top
+                width="100%"
+                src="./assets/images/sellingprice.jpeg"
+                alt="Card image cap"
+              />
               <CardBody>
-                <CardText>Pre checked items are included in the 2% base selling price</CardText>
+                <CardText>
+                  Pre checked items are included in the 2% base selling price
+                </CardText>
               </CardBody>
             </Card>
           </div>
@@ -75,8 +212,8 @@ export const BuildYourPlan: React.FC = (props) => {
         </ListGroup>
 
         <ListGroup horizontal>
-          <ListGroupItem> Virtual Tour </ListGroupItem>
-          <ListGroupItem>
+          <ListGroupItem> Virtual Tour </ListGroupItem>   
+         <ListGroupItem>
             <Dropdown isOpen={dropdownOpen} toggle={toggle}>
               <DropdownToggle caret>Prices</DropdownToggle>
               <DropdownMenu>
@@ -90,11 +227,16 @@ export const BuildYourPlan: React.FC = (props) => {
         </ListGroup>
       </Container>
 
+      <div>
+        <Button color="primary">Save</Button>{" "}
+      </div>
     </>
-  )
+  );
 };
 
-{/* <select value={dropdown} onChange={(event) => setDropdown(event.target.value)}>
+{
+  /* <select value={dropdown} onChange={(event) => setDropdown(event.target.value)}>
                 {items.map(item => <option key={item.id} value={item.name}>{item.name}</option>)}
-              </select> */}
+              </select> */
+}
 export default BuildYourPlan;

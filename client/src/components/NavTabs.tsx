@@ -21,7 +21,7 @@ const Example = () => {
 
   return (
     <Navbar color="light" light expand="md">
-      <NavbarBrand href="#">rehome utah</NavbarBrand>
+      <NavbarBrand href="#">Cole Tanner Real Estate</NavbarBrand>
       <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
@@ -53,4 +53,17 @@ const Example = () => {
         </Collapse>
     </Navbar>
   );
+
+  // Navbar.propTypes = {
+  //   light: PropTypes.bool,
+  //   dark: PropTypes.bool,
+  //   fixed: PropTypes.string,
+  //   color: PropTypes.string,
+  //   role: PropTypes.string,
+  //   expand: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+  //   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
+  //   // pass in custom element to use
+  // }
 }
+
+export default Example;   

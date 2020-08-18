@@ -11,7 +11,8 @@
     "install": "cd client && npm install",
     "tsc": "tsc",
     "build": "npm run tsc && cd client && npm run build",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "npm run build",
+    "seed": "npm run tsc && node out/scripts/seedDB.js"
   },
   "author": "",
   "license": "ISC",
@@ -24,12 +25,17 @@
   },
   "dependencies": {
     "@types/bcrypt": "^3.0.0",
+    "@types/connect-mongo": "^3.1.3",
+    "@types/express-session": "^1.17.0",
     "@types/mongoose": "^5.7.34",
     "@types/passport": "^1.0.4",
     "@types/react-router-dom": "^5.1.5",
+    "axios": "^0.19.2",
     "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
+    "connect-mongo": "^3.2.0",
     "cookie-parser": "^1.4.5",
+    "dotenv": "^8.2.0",
     "express": "^4.16.3",
     "express-session": "^1.17.1",
     "http-proxy-middleware": "^1.0.5",

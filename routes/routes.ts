@@ -1,22 +1,29 @@
 const router = require("express").Router();
-import passport from "passport"
+import passport from "passport";
+import { resolveSoa } from "dns";
 
 // auth with google
-//   Use passport.authenticate() as route middleware to authenticate the
-//   request.  The first step in Google authentication will involve
-//   redirecting the user to google.com.  After authorization, Google
-//   will redirect the user back to this application at /auth/google/callback
-router.get("/google", passport.authenticate("google", {
-    scope: ["profile", "email"]
-}))
+router.get(
+  "/google",
+  passport.authenticate("google", {
+    scope: ["profile", "email"],
+  })
+);
 
-// callback route for google to redirect to
-//   Use passport.authenticate() as route middleware to authenticate the
-//   request.  If authentication fails, the user will be redirected back to the
-//   login page.  Otherwise, the primary route function function will be called,
-//   which, in this example, will redirect the user to the home page.
-router.get("/google/callback", passport.authenticate("google"), (req: any, res: any) => {
-    res.send("you reached the callback URI")
-})
+// callback route that will close the popup window and redirect parent window to "/" when user signs in
+router.get(
+  "/google/callback",
+  passport.authenticate("google", { failureRedirect: "/login" }),
+  function (req: any, res: any) {
+    res.send("<script>window.opener.postMessage('auth popup closed', '*');window.close();</script>");
+  }
+);
+
+// auth logout
+router.get("/logout", function (req: any, res: any) {
+  req.logout();
+  // res.redirect("/login");
+  res.send("logged out")
+});
 
 module.exports = router;
