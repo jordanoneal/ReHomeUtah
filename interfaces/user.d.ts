@@ -8,6 +8,7 @@ export interface IUser {
   zipCode?: number;
   phoneNumber?: string;
   referrer?: string;
+  // admin: boolean;
 }
 
 export interface ILogin {

@@ -23,9 +23,11 @@ router.post("/savesellersdetails", async (req: any, res: any) => {
   const data = await Seller.create(req.body);
   // const data = await Seller.findByIdAndUpdate(req.body._id, req.body);
   console.log("sellers body:", req.body);
-  res.json({
-    msg: "recieved sellers details",
-  });
+  if (data) {
+    res.json({
+      msg: "recieved sellers details",
+    });
+  }
 });
 
 // get sellers details

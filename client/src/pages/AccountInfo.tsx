@@ -5,8 +5,11 @@ import { useRecoilState } from "recoil";
 import API from "../utils/API";
 import useUserState from "../utils/useUserState";
 import "../styles/AccountInfo.css";
+import usePathState from "../utils/usePathState";
+import { Redirect } from "react-router";
 
 function AccountInfo() {
+  const pathname = usePathState();
   const [user, postUser] = useUserState();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -163,7 +166,7 @@ function AccountInfo() {
         Submit
       </button>
     </form>
-  );
+  )
 }
 
 export default AccountInfo;

@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import API from "../utils/API";
+import { Redirect } from "react-router-dom";
+import usePathState from "../utils/usePathState";
+import useUserState from "../utils/useUserState";
 
 export default function DummySellersDetails() {
   const [sellBy, setSellBy] = useState("");
@@ -104,5 +107,5 @@ export default function DummySellersDetails() {
         </button>
       </form>
     </div>
-  );
+  )
 }
