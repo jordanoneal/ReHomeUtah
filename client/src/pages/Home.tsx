@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import useUserState from "../utils/useUserState";
 import { Redirect } from 'react-router-dom'
 import API from "../utils/API";
-import HomeJumbotron from "../components/Jumbotron";
+import HomeJumbotron from "../components/HomeJumbotron";
 
 export default function DummyHome() {
   const [user, postUser, login, logout] = useUserState();
