@@ -7,7 +7,7 @@ import {
 
 const HomeJumbotron = () => {
     return(
-        <Jumbotron className="jumbotron">
+        <Jumbotron className="homeJumbotron">
             <h1 className="display-3">There is a problem with the way real estate is being done.</h1>
             <p className="display-5">No one wants to awkwardly haggle with a realtor over the pricing of services. Your home is as unique as you are, so why shouldn't your home's marketing plan be personalized to fit you, too?</p>
             <hr className="my-2" />

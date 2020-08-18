@@ -35,12 +35,3 @@ export interface IIncludedPricing {
     price: string
 }
 
-// export interface Pricing {
-//     type: string,
-//     options?: IServicePricingOption[],
-//     min?: number;
-//     max?: number;
-//     increment?: number;
-//     unitPrice?: number;
-//     price?: number;
-// }
