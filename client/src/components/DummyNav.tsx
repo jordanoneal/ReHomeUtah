@@ -26,7 +26,7 @@ export default function DummyNav() {
             </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#!">
+            <a className="nav-link" href="/buildyourplan">
               Build a Plan
             </a>
           </li>

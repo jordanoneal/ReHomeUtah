@@ -6,6 +6,7 @@ export default {
   postUser: (user: User) => axios.post("/api/saveuser", user),
   logIn: () => axios.get("/auth/google"),
   logOut: () => axios.get("/auth/logout"),
+  getServices: () => axios.get("/api/services"),
   // post route for sellers details
   postSeller: (seller: any) => axios.post("/api/savesellersdetails", seller),
 };
