@@ -10,8 +10,8 @@ const apiRoutes = require("./routes/apiRoutes");
 
 // associate google strategy wih passport object
 const passportSetup = require("./config/passport");
-const session = require('express-session');
-const MongoStore = require('connect-mongo')(session);
+const session = require("express-session");
+const MongoStore = require("connect-mongo")(session);
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -25,24 +25,28 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/rehomeutah", {
 });
 
 mongoose.Promise = global.Promise;
-const db = mongoose.connection
+const db = mongoose.connection;
 app.use(
   session({
     secret: "keyboard cat",
     resave: true,
     saveUninitialized: true,
-    store: new MongoStore({ mongooseConnection: db })
+    store: new MongoStore({ mongooseConnection: db }),
   })
 );
 
-var forceSsl = function (req: express.Request, res: express.Response, next: () => void ) {
-  if (req.headers['x-forwarded-proto'] !== 'https') {
-      return res.redirect(['https://', req.get('Host'), req.url].join(''));
+var forceSsl = function (
+  req: express.Request,
+  res: express.Response,
+  next: () => void
+) {
+  if (req.headers["x-forwarded-proto"] !== "https") {
+    return res.redirect(["https://", req.get("Host"), req.url].join(""));
   }
   return next();
 };
 
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === "production") {
   app.use(forceSsl);
 }
 
@@ -59,11 +63,11 @@ app.use(routes);
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
-console.log("different")
+console.log("different");
 
 // Serve up static assets (usually on heroku)
 // if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../client/build")));
+app.use(express.static(path.join(__dirname, "../client/build")));
 // }
 
 // Define API routes here

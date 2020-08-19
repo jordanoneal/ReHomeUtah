@@ -11,20 +11,22 @@ const ServicesSeed = [
     explanation: "Your home will show up on over 100 listing websites (including Zillow, Trulia and Redfin).",
     pricing: {
       Included: {
-        description: "This service is included in the base price of two percent (2%) of the sale of the home.",
-        price: "(Included in 2% Base Price)"
-      }
-    }
+        description:
+          "This service is included in the base price of two percent (2%) of the sale of the home.",
+        price: "(Included in 2% Base Price)",
+      },
+    },
   },
   {
     serviceName: "Professional Photos",
     explanation: "Like dating, first impressions are important when selling your home. We give your home's first impression the competitive edge by using the best photographer in the business.",
     pricing: {
       Included: {
-        description: "This service is included in the base price of two percent (2%) of the sale of the home.",
-        price: "(Included in 2% Base Price)"
-      }
-    }
+        description:
+          "This service is included in the base price of two percent (2%) of the sale of the home.",
+        price: "(Included in 2% Base Price)",
+      },
+    },
   },
   {
     serviceName: "Market Analysis to Accurately Price Your Home",
@@ -41,60 +43,66 @@ const ServicesSeed = [
     explanation: "Nobody likes paperwork. We'll take care of it for you.",
     pricing: {
       Included: {
-        description: "This service is included in the base price of two percent (2%) of the sale of the home.",
-        price: "(Included in 2% Base Price)"
-      }
-    }
+        description:
+          "This service is included in the base price of two percent (2%) of the sale of the home.",
+        price: "(Included in 2% Base Price)",
+      },
+    },
   },
   {
     serviceName: "Present/Interpret Offers",
     explanation: "We’re in your corner and will make you a savvy homeseller, giving you confidence during your negotiations.",
     pricing: {
       Included: {
-        description: "This service is included in the base price of two percent (2%) of the sale of the home.",
-        price: "(Included in 2% Base Price)"
-      }
-    }
+        description:
+          "This service is included in the base price of two percent (2%) of the sale of the home.",
+        price: "(Included in 2% Base Price)",
+      },
+    },
   },
   {
     serviceName: "Coordinate with other Parties Invlolved in Your Transaction",
     explanation: "There are a lot of people involved in a Real Estate transaction (title representitives, lenders, inspectors, etc). We coordinate with them so you don't have to.",
     pricing: {
       Included: {
-        description: "This service is included in the base price of two percent (2%) of the sale of the home.",
-        price: "(Included in 2% Base Price)"
-      }
-    }
+        description:
+          "This service is included in the base price of two percent (2%) of the sale of the home.",
+        price: "(Included in 2% Base Price)",
+      },
+    },
   },
   {
     serviceName: "On Call Support",
     explanation: "Call me, maybe?",
     pricing: {
       Included: {
-        description: "This service is included in the base price of two percent (2%) of the sale of the home.",
-        price: "(Included in 2% Base Price)"
-      }
-    }
+        description:
+          "This service is included in the base price of two percent (2%) of the sale of the home.",
+        price: "(Included in 2% Base Price)",
+      },
+    },
   },
   {
     serviceName: "Lighted Yard Sign",
     explanation: "Our yard signs have solar-powered lights that get the night crowd's attention.",
     pricing: {
       Included: {
-        description: "This service is included in the base price of two percent (2%) of the sale of the home.",
-        price: "(Included in 2% Base Price)"
-      }
-    }
+        description:
+          "This service is included in the base price of two percent (2%) of the sale of the home.",
+        price: "(Included in 2% Base Price)",
+      },
+    },
   },
   {
     serviceName: "Open House Events",
     explanation: "We prepare days in advance for our massive open house events. They’re basically giant house parties — but you're not invited... sorry.",
     pricing: {
       Included: {
-        description: "This service is included in the base price of two percent (2%) of the sale of the home.",
-        price: "(Included in 2% Base Price)"
-      }
-    }
+        description:
+          "This service is included in the base price of two percent (2%) of the sale of the home.",
+        price: "(Included in 2% Base Price)",
+      },
+    },
   },
   {
     serviceName: "Virtual Staging",
@@ -104,9 +112,9 @@ const ServicesSeed = [
         min: 1,
         max: 50,
         increment: 1,
-        unitPrice: 40
-      }
-    }
+        unitPrice: 40,
+      },
+    },
   },
   {
     serviceName: "Virtual Tour",
@@ -115,15 +123,15 @@ const ServicesSeed = [
       Options: [
           {
             description: "Up to 2500 sq ft = $180",
-            price: 180
+            price: 180,
           },
           {
             description: "2500-3900 Sq ft = $280",
-            price: 280
+            price: 280,
           },
           {
             description: "4000-6400 sq ft = $380",
-            price: 380
+            price: 380,
           },
           {
             description: "6500-8900 sq ft = $480",
@@ -140,27 +148,27 @@ const ServicesSeed = [
         min: 5,
         max: 50,
         increment: 1,
-        unitPrice: 10
-      }
-    }
+        unitPrice: 10,
+      },
+    },
   },
   {
     serviceName: "Drone Video",
     explanation: "Is your home located at an awesome spot? Show it off to buyers with a drone video!",
     pricing: {
       Flat: {
-        price: 299
-      }
-    }
+        price: 299,
+      },
+    },
   },
   {
     serviceName: "Professional Marketing Video",
     explanation: "There is nothing classier than a professionally done video to broadcast on your listing and social media.",
     pricing: {
       Flat: {
-        price: 400
-      }
-    }
+        price: 400,
+      },
+    },
   },
   // {
   //   serviceName: "Professional Cleaning",
@@ -177,9 +185,9 @@ const ServicesSeed = [
         min: 1,
         max: 30,
         increment: 1,
-        unitPrice: 90
-      }
-    }
+        unitPrice: 90,
+      },
+    },
   },
   {
     serviceName: "Carpet Cleaning",
@@ -189,9 +197,9 @@ const ServicesSeed = [
         min: 1,
         max: 30,
         increment: 1,
-        unitPrice: 90
-      }
-    }
+        unitPrice: 90,
+      },
+    },
   },
   {
     serviceName: "Carpet Sanitizing",
@@ -201,9 +209,9 @@ const ServicesSeed = [
         min: 1,
         max: 30,
         increment: 1,
-        unitPrice: 90
-      }
-    }
+        unitPrice: 90,
+      },
+    },
   },
   // {
   //   serviceName: "Door Flyers",
@@ -213,7 +221,7 @@ const ServicesSeed = [
   //       min: ,
   //       max: ,
   //       increment: ,
-  //       unitPrice: 
+  //       unitPrice:
   //     }
   //   }
   // },
@@ -224,11 +232,11 @@ const ServicesSeed = [
       Options: [
           {
             description: "1000 Flyers = $0.60/Flyer",
-            price: 600
+            price: 600,
           },
           {
             description: "2500 Flyers = $0.45/Flyer",
-            price: 1000
+            price: 1000,
           },
           {
             description: "5000 Flyers = $0.39/Flyer",

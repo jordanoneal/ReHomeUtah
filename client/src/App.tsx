@@ -4,7 +4,8 @@ import "./App.css";
 import Signup from "./pages/Signup";
 import AccountInfo from "./pages/AccountInfo";
 import DummyHome from "./pages/Home";
-// import DummyNav from "./components/DummyNav";
+import DummyNav from "./components/DummyNav";
+import DummySellersDetails from "./pages/DummySellersDetails";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { RecoilRoot } from "recoil";
 import { BuildYourPlan } from "./pages/BuildYourPan";
@@ -13,7 +14,7 @@ function App() {
   return (
     <div className="App">
       <RecoilRoot>
-        {/* < DummyNav /> */}
+        <DummyNav />
         <Router>
           <Switch>
             {/* <Route exact path="/" component={DummyHome} />
@@ -30,6 +31,9 @@ function App() {
             </Route>
             <Route exact path="/buildyourplan">
               <BuildYourPlan></BuildYourPlan>
+            </Route>
+            <Route exact path="/sellersdetails">
+              <DummySellersDetails />
             </Route>
           </Switch>
         </Router>

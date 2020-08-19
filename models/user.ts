@@ -15,6 +15,7 @@ export const UserSchema = new Schema<IUserModel>({
     type: String,
     required: true,
     index: true,
+    unique: true
   },
   address: {
     type: String,

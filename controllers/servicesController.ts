@@ -30,7 +30,7 @@ export default {
     remove: async function(req: express.Request, res: express.Response) {
         await Services
             .findById({ _id: req.params.id })
-            .then(IServicesModel => IServicesModel.remove())
+            .then(IServicesModel => IServicesModel?.remove())
             .then(IServicesModel => res.json(IServicesModel))
             .catch(err => res.status(422).json(err));
     }

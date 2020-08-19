@@ -1,7 +1,7 @@
 import mongoose, { Schema, Document, Model } from "mongoose";
 import { IServices } from "../interfaces/services";
 
-export interface IServicesModel extends IServices, Document { };
+export interface IServicesModel extends IServices, Document {}
 
 // export interface IServicesModel
 export const ServicesSchema = new Schema<IServicesModel>({
@@ -31,16 +31,16 @@ export const ServicesSchema = new Schema<IServicesModel>({
             unitPrice: Number,
         },
         Flat: {
-            price: Number
+            price: Number,
         },
         Included: {
             description: String,
-            price: String
-        }
+            price: String,
+        },
     }
 });
 
 export const Services = mongoose.model<IServicesModel>(
-    "Services",
-    ServicesSchema
+  "Services",
+  ServicesSchema
 );
