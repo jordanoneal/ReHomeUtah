@@ -4,8 +4,12 @@ import { userState, User } from "../recoil/userAtom";
 import { useRecoilState } from "recoil";
 import API from "../utils/API";
 import useUserState from "../utils/useUserState";
+import "../styles/AccountInfo.css";
+import usePathState from "../utils/usePathState";
+import { Redirect } from "react-router";
 
 function AccountInfo() {
+  const pathname = usePathState();
   const [user, postUser] = useUserState();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -13,6 +17,7 @@ function AccountInfo() {
   const [zipCode, setZipCode] = useState("");
   const [refferer, setRefferer] = useState("");
   const [city, setCity] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
 
   // useEffect(() => console.log(user), [user]);
 
@@ -24,6 +29,7 @@ function AccountInfo() {
       setZipCode(user.zipCode || "");
       setRefferer(user.referrer || "");
       setCity(user.city || "");
+      setPhoneNumber(user.phoneNumber || "");
     }
   }, [user]);
 
@@ -39,6 +45,7 @@ function AccountInfo() {
         zipCode: zipCode,
         referrer: refferer,
         city: city,
+        phoneNumber: phoneNumber
       })
     );
   };
@@ -90,7 +97,7 @@ function AccountInfo() {
         />
       </div>
       <div className="form-group">
-        <label htmlFor="formGroupExampleInput">zip code</label>
+        <label htmlFor="formGroupExampleInput">Zip Code</label>
         <input
           type="text"
           className="form-control"
@@ -98,6 +105,18 @@ function AccountInfo() {
           name="zipCode"
           onChange={({ target: { value } }) => setZipCode(value)}
           value={zipCode}
+        />
+      </div>
+      <div className="form-group">
+        <label htmlFor="formGroupExampleInput">Phone Number</label>
+        <input
+          type="tel"
+          className="form-control"
+          placeholder="202-555-0193"
+          pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+          name="phone"
+          onChange={({ target: { value } }) => setPhoneNumber(value)}
+          value={phoneNumber}
         />
       </div>
       <div className="form-group">
@@ -113,11 +132,18 @@ function AccountInfo() {
       </div>
 
       <div className="form-group">
-        <label htmlFor="formGroupExmapleInput">
-          Were you referred by a past client?
-        </label>
+        <label htmlFor="formGroupExmapleInput">Were you referred by a past client?</label>
+        <div className="form-check form-check-inline">
+          <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"></input>
+          <label className="form-check-label" >Yes</label>
+        </div>
+        <div className="form-check form-check-inline">
+          <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"></input>
+          <label className="form-check-label" >No</label>
+        </div>
 
-        <input
+
+        {/* <input
           className="form-check-input"
           type="checkbox"
           value=""
@@ -134,13 +160,13 @@ function AccountInfo() {
         ></input>
         <label className="form-check-label" htmlFor="defaultCheck2">
           No
-        </label>
+        </label> */}
       </div>
-      <button className="btn btn-sucess" type="submit">
-        Submit info
+      <button className="btn" type="submit">
+        Submit
       </button>
     </form>
-  );
+  )
 }
 
 export default AccountInfo;

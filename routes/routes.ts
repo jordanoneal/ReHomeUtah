@@ -15,7 +15,9 @@ router.get(
   "/google/callback",
   passport.authenticate("google", { failureRedirect: "/login" }),
   function (req: any, res: any) {
-    res.send("<script>window.opener.postMessage('auth popup closed', '*');window.close();</script>");
+    res.send(
+      "<script>window.opener.postMessage('auth popup closed', '*');window.close();</script>"
+    );
   }
 );
 
@@ -23,7 +25,7 @@ router.get(
 router.get("/logout", function (req: any, res: any) {
   req.logout();
   // res.redirect("/login");
-  res.send("logged out")
+  res.send("logged out");
 });
 
 module.exports = router;

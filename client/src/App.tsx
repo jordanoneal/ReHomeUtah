@@ -5,6 +5,7 @@ import Signup from "./pages/Signup";
 import AccountInfo from "./pages/AccountInfo";
 import DummyHome from "./pages/DummyHome";
 import DummyNav from "./components/DummyNav";
+import DummySellersDetails from "./pages/DummySellersDetails";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { RecoilRoot } from "recoil";
 
@@ -12,7 +13,7 @@ function App() {
   return (
     <div className="App">
       <RecoilRoot>
-        {/* < DummyNav /> */}
+        <DummyNav />
         <Router>
           <Switch>
             {/* <Route exact path="/" component={DummyHome} />
@@ -26,6 +27,9 @@ function App() {
             </Route>
             <Route exact path="/accountinfo">
               <AccountInfo />
+            </Route>
+            <Route exact path="/sellersdetails">
+              <DummySellersDetails />
             </Route>
           </Switch>
         </Router>
