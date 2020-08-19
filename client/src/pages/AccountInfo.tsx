@@ -3,14 +3,14 @@ import axios from "axios";
 import { userState, User } from "../recoil/userAtom";
 import { useRecoilState } from "recoil";
 import API from "../utils/API";
-import useUserState from "../utils/useUserState";
+import useForceUserLogin from "../utils/useForceUserLogin";
 import "../styles/AccountInfo.css";
 import usePathState from "../utils/usePathState";
 import { Redirect } from "react-router";
 
 function AccountInfo() {
   const pathname = usePathState();
-  const [user, postUser] = useUserState();
+  const [user, postUser] = useForceUserLogin();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [address, setAddress] = useState("");
@@ -50,7 +50,7 @@ function AccountInfo() {
     );
   };
 
-  return (
+  return   (
     <form onSubmit={submitAccountInfo}>
       <div className="form-group">
         <label htmlFor="formGroupExampleInput">First name</label>

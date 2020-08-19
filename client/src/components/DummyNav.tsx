@@ -1,9 +1,11 @@
 import React from "react";
 import useUserState from "../utils/useUserState";
 import "../styles/Navbar.css";
+import { Link, useLocation } from "react-router-dom";
 
 export default function DummyNav() {
   const [user, postUser, login, logout] = useUserState();
+  const location = useLocation()
 
   return (
     <nav className="navbar navbar-expand-lg">
@@ -16,9 +18,12 @@ export default function DummyNav() {
       <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul className="navbar-nav mr-auto mt-2 mt-md-0">
           <li className="nav-item">
-            <a className="nav-link" href="/">
+            {/* <a className="nav-link" href="/">
               Home <span className="sr-only">(current)</span>
-            </a>
+            </a> */}
+            <Link to="/" className={location.pathname === "/" ? "nav-link active" : "nav-link"}>
+              Home
+            </Link>
           </li>
           <li className="nav-item">
             <a className="nav-link" href="#!">

@@ -5,7 +5,7 @@ import API from "../utils/API";
 import { useState } from "react";
 
 export default function useUserState(): [
-  User | undefined,
+  User | undefined | false,
   (user: User) => void,
   () => void,
   () => void
@@ -15,7 +15,7 @@ export default function useUserState(): [
   const getUser = useCallback(async () => {
     const { data } = await API.getUser();
     console.log(data);
-    setUser(data && new User(data));
+    setUser(!!data && new User(data));
   }, [setUser]);
 
   useEffect(() => {

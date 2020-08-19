@@ -14,8 +14,8 @@ function App() {
   return (
     <div className="App">
       <RecoilRoot>
-        <DummyNav />
         <Router>
+        <DummyNav />
           <Switch>
             {/* <Route exact path="/" component={DummyHome} />
             <Route exact path="/login" component={Signup} />
