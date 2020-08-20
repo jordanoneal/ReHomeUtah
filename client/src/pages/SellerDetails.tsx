@@ -1,13 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Input, Label, FormGroup, Col, Button, Container } from 'reactstrap';
 import API from "../utils/API";
 import usePathState from "../utils/usePathState";
+import useUserState from "../utils/useUserState";
 import { Redirect } from "react-router";
+import useForceUserLogin from "../utils/useForceUserLogin";
 
 
 
 
-export const SellerDetails: React.FC = (props) => {
+
+export const Seller: React.FC = (props) => {
+    const [user] = useForceUserLogin();
     const [pathname, setPathname] = React.useState<string>();
     const [years, setYears] = useState<string>("");
     const [months, setMonths] = useState<string>("");
@@ -28,7 +32,7 @@ export const SellerDetails: React.FC = (props) => {
         console.log(reasonSelling);
         console.log(concernsSelling);
         console.log(neededWork);
-        if(!pets || (pets && petsExplained)) {
+        // if(!pets || (pets && petsExplained)) {
             API.postSeller({
                 livedAtProperty: {
                     years: parseInt(years),
@@ -46,17 +50,17 @@ export const SellerDetails: React.FC = (props) => {
               setPathname("/orderconfirmation")
               
         }
-        };
+        
 
 
     return pathname ? (<Redirect to ={pathname}/>) :(
         <>
         <Container className="themed-container">
         <Form onSubmit={handleSumbmit}>
-            <Col md={2}>
+            <Col md={12}>
                 <FormGroup>
                     <Label for="exampleYears">How long have you owned this property?</Label>
-                    <Input type="number"  name="Years" id="exampleYears" placeholder="Years" onChange={(event) => setYears(event.target.value)}/>
+                    <Input type="number"  name="Years" id="exampleYears" placeholder="Years" onChange={(event) => setYears(event.target.value)}/><br></br>
                     <Input type="number"  name="Months" id="exampleMonths" placeholder="Months" onChange={(event) => setMonths(event.target.value)}/>
                 </FormGroup>
             </Col>
@@ -132,10 +136,10 @@ export const SellerDetails: React.FC = (props) => {
                 <Label for="exampleSellingReason">What will potential buyers like most about your home?</Label>
                 <Input type="textarea" name="text" id="exampleSellingReason" onChange={(event) => setHomeFeatures(event.target.value)} />
             </FormGroup>
+            <Button color="primary" size="lg">Request buyer's agent service</Button>{ ' ' }
+            <Button type="submit" className="btn" color="primary" size="lg">Submit order </Button>
         </Form>
 
-        <Button color="primary" size="lg">Request buyer's agent service</Button>{ ' ' }
-        <Button type="submit" className="btn" color="primary" size="lg">Submit order </Button>
         </Container>
     </>
 
@@ -144,4 +148,4 @@ export const SellerDetails: React.FC = (props) => {
 
 
 
-export default SellerDetails;
+export default Seller;

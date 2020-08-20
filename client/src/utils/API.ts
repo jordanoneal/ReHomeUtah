@@ -1,6 +1,6 @@
 import axios from "axios";
 import { User } from "../recoil/userAtom";
-import {IsellerDetails } from "../../../interfaces/sellerDetails"
+import {ISellerDetails } from "../../../interfaces/sellerDetails"
 
 export default {
   getUser: () => axios.get("/api/user"),
@@ -8,5 +8,5 @@ export default {
   logIn: () => axios.get("/auth/google"),
   logOut: () => axios.get("/auth/logout"),
   getServices: () => axios.get("/api/services"),
-  postSeller: (seller: IsellerDetails) => axios.post("/api/sellerdetails", seller)
+  postSeller: (seller: ISellerDetails) => axios.post("/api/savesellerdetails", seller)
 };
