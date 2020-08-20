@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import { Form, Input, Label, FormGroup, Col, Button, Container } from 'reactstrap';
 import API from "../utils/API";
+import usePathState from "../utils/usePathState";
+import { Redirect } from "react-router";
+
+
 
 
 export const SellerDetails: React.FC = (props) => {
+    const [pathname, setPathname] = React.useState<string>();
     const [years, setYears] = useState<string>("");
     const [months, setMonths] = useState<string>("");
     const [sellBy, setSellBy] = useState("");
@@ -38,13 +43,13 @@ export const SellerDetails: React.FC = (props) => {
                 currentLiving: parseInt(currentLiving),
                 homeFeatures: homeFeatures,
               });
-             
+              setPathname("/orderconfirmation")
               
         }
         };
 
 
-    return (
+    return pathname ? (<Redirect to ={pathname}/>) :(
         <>
         <Container className="themed-container">
         <Form onSubmit={handleSumbmit}>
@@ -130,7 +135,7 @@ export const SellerDetails: React.FC = (props) => {
         </Form>
 
         <Button color="primary" size="lg">Request buyer's agent service</Button>{ ' ' }
-        <Button type="submit" color="primary" size="lg">Submit order </Button>
+        <Button type="submit" className="btn" color="primary" size="lg">Submit order </Button>
         </Container>
     </>
 
