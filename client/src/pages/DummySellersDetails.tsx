@@ -3,8 +3,10 @@ import API from "../utils/API";
 import { Redirect } from "react-router-dom";
 import usePathState from "../utils/usePathState";
 import useUserState from "../utils/useUserState";
+import useForceUserLogin from "../utils/useForceUserLogin";
 
 export default function DummySellersDetails() {
+  const [user] = useForceUserLogin();
   const [sellBy, setSellBy] = useState("");
   const [homeListed, setHomeListed] = useState("");
   const [reasonSelling, setReasonSelling] = useState("");
@@ -36,17 +38,6 @@ export default function DummySellersDetails() {
       concernsSelling: concernsSelling,
       neededWork: neededWork,
     });
-
-    // API.postSeller(
-    //   new Seller({
-    //     // _id: "", // don't know what to assign property
-    //     sellBy: sellBy,
-    //     homeListed: homeListed,
-    //     reasonSelling: reasonSelling,
-    //     concernsSelling: concernsSelling,
-    //     neededWork: neededWork,
-    //   })
-    // );
   };
 
   return (
