@@ -1,11 +1,12 @@
 import { IServices } from "./services";
 
 export interface IInvoice {
+    user: Object,
     selectedServices: [
         {
             serviceId: Object
-            selection?: String
-            price: Number
+            selection?: Number
+            // price: Number
         }
     ]
 

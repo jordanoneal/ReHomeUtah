@@ -1,7 +1,11 @@
 import mongoose, { Schema, Document, Model } from "mongoose";
 import { ISellerDetails } from "../interfaces/sellerDetails";
+import { IUserModel } from "./user";
 
-export interface ISellerDetailsModel extends ISellerDetails, Document {}
+export interface ISellerDetailsModel extends ISellerDetails, Document {
+  // foreign key
+  user: IUserModel["_id"];
+}
 
 // schema
 export const SellerSchema = new Schema<ISellerDetailsModel>({

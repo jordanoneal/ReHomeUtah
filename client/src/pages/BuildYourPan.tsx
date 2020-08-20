@@ -42,7 +42,9 @@ export const BuildYourPlan = () => {
 
             <Row>
                 <Col xs={12}>
-                    <Button color="primary"> Save and Continue </Button>
+                    <Link to="/accountinfo">
+                        <Button color="primary"> Save and Continue </Button>
+                    </Link>
                 </Col>
             </Row>
         </>
