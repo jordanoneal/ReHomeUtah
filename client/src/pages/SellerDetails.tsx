@@ -47,7 +47,7 @@ export const Seller: React.FC = (props) => {
                 currentLiving: parseInt(currentLiving),
                 homeFeatures: homeFeatures,
               });
-              setPathname("/orderconfirmation")
+              setPathname("/confirmation")
               
         }
         

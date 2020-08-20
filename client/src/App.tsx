@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { RecoilRoot } from "recoil";
 import { BuildYourPlan } from "./pages/BuildYourPan";
 import SellerDetails from "./pages/SellerDetails";
-import OrderConfirmation from "./pages/OrderConfirmation";
+import Confirmation from "./pages/Confirmation";
 
 function App() {
   return (
@@ -35,8 +35,8 @@ function App() {
             <Route exact path="/sellersdetails">
             <SellerDetails />
             </Route>
-            <Route exact path="/orderconfirmation">
-              <OrderConfirmation/>
+            <Route exact path="/confirmation">
+              <Confirmation/>
               </Route>
           </Switch>
         </Router>
