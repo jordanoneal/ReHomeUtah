@@ -7,8 +7,8 @@ import {
 
 const PlanJumbotron = () => {
     return (
-        <Jumbotron className="planJumbotron" fluid>
-            <Container fluid>
+        <Jumbotron className="planJumbotron">
+            <Container>
                 <h1 className="display-3">Build Your Plan</h1>
                 <p className="lead">Let's Get Started</p>
             </Container>

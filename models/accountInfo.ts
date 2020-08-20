@@ -1,3 +1,4 @@
+export {};
 // import mongoose, { Schema, Document, Model } from "mongoose";
 // import { IsellerDetails } from "../interfaces/sellerDetails";
 

@@ -1,9 +1,7 @@
 const mongoose = require("mongoose");
 const { Services, IServicesModel } = require("../models/services");
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/rehomeutah", {
-  useNewUrlParser: true,
-});
+mongoose.connect("//heroku_g72p4k6q:9qe50o7ci3lp8bob9igam6fphn@ds115214.mlab.com:15214/heroku_g72p4k6q" || "mongodb://localhost/rehomeutah", { useNewUrlParser: true });
 
 const ServicesSeed = [
   {
@@ -61,7 +59,7 @@ const ServicesSeed = [
     },
   },
   {
-    serviceName: "Coordinate with other Parties Invlolved in Your Transaction",
+    serviceName: "Coordinate with other Parties Involved in Your Transaction",
     explanation: "There are a lot of people involved in a Real Estate transaction (title representitives, lenders, inspectors, etc). We coordinate with them so you don't have to.",
     pricing: {
       Included: {
