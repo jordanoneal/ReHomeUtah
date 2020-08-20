@@ -4,11 +4,17 @@ import API from "../utils/API";
 
 
 export const SellerDetails: React.FC = (props) => {
+    const [years, setYears] = useState<string>("");
+    const [months, setMonths] = useState<string>("");
     const [sellBy, setSellBy] = useState("");
     const [homeListed, setHomeListed] = useState("");
     const [reasonSelling, setReasonSelling] = useState("");
     const [concernsSelling, setConcernsSelling] = useState("");
     const [neededWork, setNeededWork] = useState("");
+    const [pets, setPets] = useState(false);
+    const [petsExplained, setPetsExplained] = useState("");
+    const [currentLiving, setCurrentLiving] = useState<string>("");
+    const [homeFeatures, setHomeFeatures] = useState("");
 
     const handleSumbmit = (event: any) => {
         event.preventDefault();
@@ -17,14 +23,24 @@ export const SellerDetails: React.FC = (props) => {
         console.log(reasonSelling);
         console.log(concernsSelling);
         console.log(neededWork);
-
-        // API.postSeller({
-        //     sellBy: sellBy,
-        //     homeListed: homeListed,
-        //     reasonSelling: reasonSelling,
-        //     concernsSelling: concernsSelling,
-        //     neededWork: neededWork,
-        //   });
+        if(!pets || (pets && petsExplained)) {
+            API.postSeller({
+                livedAtProperty: {
+                    years: parseInt(years),
+                    months: parseInt(months),
+                },
+                sellBy: sellBy,
+                homeListed: homeListed,
+                reasonSelling: reasonSelling,
+                concernsSelling: concernsSelling,
+                neededWork: neededWork,
+                pets: pets,
+                currentLiving: parseInt(currentLiving),
+                homeFeatures: homeFeatures,
+              });
+             
+              
+        }
         };
 
 
@@ -35,8 +51,8 @@ export const SellerDetails: React.FC = (props) => {
             <Col md={2}>
                 <FormGroup>
                     <Label for="exampleYears">How long have you owned this property?</Label>
-                    <Input type="text"  name="Years" id="exampleYears" placeholder="Years"/>
-                    <Input type="text"  name="Months" id="exampleMonths" placeholder="Months"/>
+                    <Input type="number"  name="Years" id="exampleYears" placeholder="Years" onChange={(event) => setYears(event.target.value)}/>
+                    <Input type="number"  name="Months" id="exampleMonths" placeholder="Months" onChange={(event) => setMonths(event.target.value)}/>
                 </FormGroup>
             </Col>
             <FormGroup>
@@ -78,6 +94,7 @@ export const SellerDetails: React.FC = (props) => {
                     type="select"
                     name="selectMulti"
                     id="exampleSelectMulti"
+                    onChange={(event) => setCurrentLiving(event.target.value)}
                     multiple
                 >
                     <option>1</option>
@@ -108,16 +125,18 @@ export const SellerDetails: React.FC = (props) => {
             </FormGroup>
             <FormGroup>
                 <Label for="exampleSellingReason">What will potential buyers like most about your home?</Label>
-                <Input type="textarea" name="text" id="exampleSellingReason" />
+                <Input type="textarea" name="text" id="exampleSellingReason" onChange={(event) => setHomeFeatures(event.target.value)} />
             </FormGroup>
         </Form>
 
         <Button color="primary" size="lg">Request buyer's agent service</Button>{ ' ' }
-        <Button color="primary" size="lg">Submit order</Button>
+        <Button type="submit" color="primary" size="lg">Submit order </Button>
         </Container>
     </>
 
       );
     }
+
+
 
 export default SellerDetails;

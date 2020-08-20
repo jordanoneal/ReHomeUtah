@@ -7,7 +7,7 @@ export interface IsellerDetails {
    homeListed: date//^^
    reasonSelling: string
    concernsSelling: string
-   neededWork: boolean
+   neededWork: string
    explainWork?: string
    currentLiving: number
    pets: boolean

@@ -4,7 +4,7 @@ import { IsellerDetails } from "../interfaces/sellerDetails";
 export interface IsellerDetailsModel extends IsellerDetails, Document {}
 
 
-export const sellerDetailsSchema = new Schema<IsellerDetailsModel> ({
+export const SellerDetailsSchema = new Schema<IsellerDetailsModel> ({
     livedAtProperty: {
         years: {
             type: Number
@@ -45,7 +45,7 @@ export const sellerDetailsSchema = new Schema<IsellerDetailsModel> ({
     }
 })
 
-export const sellerDetails: Model<IsellerDetailsModel> = mongoose.model<IsellerDetailsModel>(
-    "sellerDetails",
-    sellerDetailsSchema
+export const SellerDetails: Model<IsellerDetailsModel> = mongoose.model<IsellerDetailsModel>(
+    "SellerDetails",
+    SellerDetailsSchema
 )
