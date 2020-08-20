@@ -1,11 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import useUserState from "../utils/useUserState";
 import "../styles/Navbar.css";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, Redirect, useHistory } from "react-router-dom";
 
 export default function DummyNav() {
   const [user, postUser, login, logout] = useUserState();
-  const location = useLocation()
+  const location = useLocation();
+  const history = useHistory();
+
+  const loginClick = () => {
+    if (!user) {
+      history.push("/login");
+    } else {
+      logout();
+    }
+  };
 
   return (
     <nav className="navbar navbar-expand-lg">
@@ -18,38 +27,66 @@ export default function DummyNav() {
       <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul className="navbar-nav mr-auto mt-2 mt-md-0">
           <li className="nav-item">
-            {/* <a className="nav-link" href="/">
-              Home <span className="sr-only">(current)</span>
-            </a> */}
-            <Link to="/" className={location.pathname === "/" ? "nav-link active" : "nav-link"}>
+            <Link
+              to="/"
+              className={
+                location.pathname === "/" ? "nav-link active" : "nav-link"
+              }
+            >
               Home
             </Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#!">
+            <Link
+              to="/about"
+              className={
+                location.pathname === "/about" ? "nav-link active" : "nav-link"
+              }
+            >
               About
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/buildyourplan">
+            <Link
+              to="/buildyourplan"
+              className={
+                location.pathname === "/buildyourplan"
+                  ? "nav-link active"
+                  : "nav-link"
+              }
+            >
               Build a Plan
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/accountinfo">
+            <Link
+              to="/accountinfo"
+              className={
+                location.pathname === "/accountinfo"
+                  ? "nav-link active"
+                  : "nav-link"
+              }
+            >
               Account Info
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/sellersdetails">
+            <Link
+              to="/sellersdetails"
+              className={
+                location.pathname === "/sellersdetails"
+                  ? "nav-link active"
+                  : "nav-link"
+              }
+            >
               Sell
-            </a>
+            </Link>
           </li>
         </ul>
         <ul className="navbar-nav ml-auto mt-2 mt-md-0">
           <li className="nav-item">
             <button
-              onClick={!user ? login : logout}
+              onClick={loginClick}
               type="button"
               className={user ? "btn-danger" : "btn-success"}
             >

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import useUserState from './useUserState'
-import { useHistory } from "react-router-dom";
+import { useHistory, Redirect } from "react-router-dom";
 import { User } from '../recoil/userAtom';
 
 type useForceUserLoginReturnType = [

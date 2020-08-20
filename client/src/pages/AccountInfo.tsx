@@ -9,7 +9,8 @@ import usePathState from "../utils/usePathState";
 import { Redirect } from "react-router";
 
 function AccountInfo() {
-  const pathname = usePathState();
+  // const pathname = usePathState();
+  const [pathname, setPathname] = React.useState<string>();
   const [user, postUser] = useForceUserLogin();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -45,12 +46,13 @@ function AccountInfo() {
         zipCode: zipCode,
         referrer: refferer,
         city: city,
-        phoneNumber: phoneNumber
+        phoneNumber: phoneNumber,
       })
     );
+    setPathname("/sellersdetails")
   };
 
-  return   (
+  return pathname ? (<Redirect to ={pathname} />) :(
     <form onSubmit={submitAccountInfo}>
       <div className="form-group">
         <label htmlFor="formGroupExampleInput">First name</label>
@@ -132,41 +134,35 @@ function AccountInfo() {
       </div>
 
       <div className="form-group">
-        <label htmlFor="formGroupExmapleInput">Were you referred by a past client?</label>
-        <div className="form-check form-check-inline">
-          <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"></input>
-          <label className="form-check-label" >Yes</label>
-        </div>
-        <div className="form-check form-check-inline">
-          <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"></input>
-          <label className="form-check-label" >No</label>
-        </div>
-
-
-        {/* <input
-          className="form-check-input"
-          type="checkbox"
-          value=""
-          id="defaultCheck1"
-        ></input>
-        <label className="form-check-label" htmlFor="defaultCheck1">
-          Yes
+        <label htmlFor="formGroupExmapleInput">
+          Were you referred by a past client?
         </label>
-        <input
-          className="form-check-input"
-          type="checkbox"
-          value=""
-          id="defaultCheck2"
-        ></input>
-        <label className="form-check-label" htmlFor="defaultCheck2">
-          No
-        </label> */}
+        <div className="form-check form-check-inline">
+          <input
+            className="form-check-input"
+            type="radio"
+            name="inlineRadioOptions"
+            id="inlineRadio1"
+            value="option1"
+          ></input>
+          <label className="form-check-label">Yes</label>
+        </div>
+        <div className="form-check form-check-inline">
+          <input
+            className="form-check-input"
+            type="radio"
+            name="inlineRadioOptions"
+            id="inlineRadio2"
+            value="option2"
+          ></input>
+          <label className="form-check-label">No</label>
+        </div>
       </div>
       <button className="btn" type="submit">
         Submit
       </button>
     </form>
-  )
+  );
 }
 
 export default AccountInfo;
