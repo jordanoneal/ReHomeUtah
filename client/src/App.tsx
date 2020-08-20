@@ -1,24 +1,22 @@
 import React from "react";
 import "./App.css";
-// import Signup from "./pages/Signup";
-// import AccountInfo from "./pages/AccountInfo";
-// import DummyHome from "./pages/DummyHome";
+import Signup from "./pages/Signup";
+import AccountInfo from "./pages/AccountInfo";
+import DummyHome from "./pages/Home";
 import DummyNav from "./components/DummyNav";
-import SellerDetails from "./Pages/SellerDetails";
+import DummySellersDetails from "./pages/DummySellersDetails";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { RecoilRoot } from "recoil";
-import BuildYourPlan from "./Pages/BuildYourPlan";
-import DummyHome from "./Pages/DummyHome";
-import Signup from "./Pages/Signup";
-import AccountInfo from "./Pages/AccountInfo";
-import OrderConfirmation from "./Pages/Orderconfirmation";
+import { BuildYourPlan } from "./pages/BuildYourPan";
+import SellerDetails from "./pages/SellerDetails";
+import OrderConfirmation from "./pages/OrderConfirmation";
 
 function App() {
   return (
     <div className="App">
       <RecoilRoot>
-        < DummyNav />
         <Router>
+        <DummyNav />
           <Switch>
             <Route exact path="/" component={DummyHome} />
             <Route exact path="/login" component={Signup} />
@@ -32,13 +30,13 @@ function App() {
             <Route exact path="/accountinfo">
               <AccountInfo />
             </Route>
-            <Route exact path="/sellerdetails">
-              <SellerDetails />
-              </Route>
-              <Route exact path="/buildyourplan">
-              <BuildYourPlan/>
-              </Route>
-              <Route exact path="/orderconfirmation">
+            <Route exact path="/buildyourplan">
+              <BuildYourPlan></BuildYourPlan>
+            </Route>
+            <Route exact path="/sellersdetails">
+            <SellerDetails />
+            </Route>
+            <Route exact path="/orderconfirmation">
               <OrderConfirmation/>
               </Route>
           </Switch>

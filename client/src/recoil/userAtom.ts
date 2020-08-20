@@ -23,7 +23,7 @@ export class User {
   }
 }
 
-export const userState = atom<User | undefined>({
+export const userState = atom<User | undefined | false>({
   key: "userState",
   default: undefined,
 });

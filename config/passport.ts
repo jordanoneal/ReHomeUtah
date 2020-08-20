@@ -22,7 +22,7 @@ passport.use(
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       callbackURL: `/auth/google/callback`,
-      proxy: true
+      proxy: true,
     },
     // passport callback function
     async (accessToken: any, refreshToken: any, profile: any, done: any) => {
