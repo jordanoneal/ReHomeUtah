@@ -31,16 +31,17 @@ export const BuildYourPlan = () => {
             <PlanJumbotron></PlanJumbotron>
             <br></br>
             <Row>
-                <Col xs="6">
+                <Col xs={12}>
                     {/* <Container classname=“themed-container”> */}
-                    <Container className="themed-container" fluid="sm">
+                    <Container className="themed-container" >
                         <ListGroup style={{ whiteSpace: "pre" }}>{services.map(service => <Service service={service} />)}
                         </ListGroup>
                     </Container>
                 </Col>
             </Row>
+
             <Row>
-                <Col xs="6">
+                <Col xs={12}>
                     <Button color="primary"> Save and Continue </Button>
                 </Col>
             </Row>
