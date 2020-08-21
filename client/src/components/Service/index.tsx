@@ -3,7 +3,6 @@ import {
   ListGroupItem,
   CustomInput,
   FormGroup,
-  Label,
   Input,
   Button,
   UncontrolledPopover,
@@ -23,12 +22,9 @@ export const Service = (props: ServiceProps) => {
   const {
     service: { _id, serviceName, explanation, pricing },
   } = props;
-  const [services, setServices] = useState<IServicesModel[]>([]);
   const [checked, setChecked] = useState(false);
-  const [tooltipOpen, setTooltipOpen] = useState(false);
-  const toggleTooltip = () => setTooltipOpen(!tooltipOpen);
   let PricingElement = null;
-  const { Flat, Incremental, Included, Options } = pricing;
+  const { Flat, Incremental, Options } = pricing;
   if (Flat) {
     PricingElement = <FormGroup>{Flat.price}</FormGroup>;
   } else if (Options && Options.length > 0) {

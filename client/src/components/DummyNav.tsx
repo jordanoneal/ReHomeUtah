@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import useUserState from "../utils/useUserState";
 import "../styles/Navbar.css";
-import { Link, useLocation, Redirect, useHistory } from "react-router-dom";
+import { Link, useLocation, useHistory } from "react-router-dom";
 
 export default function DummyNav() {
-  const [user, postUser, login, logout] = useUserState();
+  const [user, , , logout] = useUserState();
   const location = useLocation();
   const history = useHistory();
 

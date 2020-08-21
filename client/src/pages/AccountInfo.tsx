@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { userState, User } from "../recoil/userAtom";
-import { useRecoilState } from "recoil";
-import API from "../utils/API";
+import { User } from "../recoil/userAtom";
 import useForceUserLogin from "../utils/useForceUserLogin";
 import "../styles/AccountInfo.css";
-import usePathState from "../utils/usePathState";
 import { Redirect } from "react-router";
 
 function AccountInfo() {

@@ -15,10 +15,10 @@ import {
 export const BuildYourPlan = () => {
     const [services, setServices] = useState<IServicesModel[]>([]);
 
-    const [dropdownOpen, setDropdownOpen] = useState(false);
-    const toggle = () => {
-        setDropdownOpen(prevState => !prevState);
-    }
+    // const [dropdownOpen, setDropdownOpen] = useState(false);
+    // const toggle = () => {
+    //     setDropdownOpen(prevState => !prevState);
+    // }
 
     useEffect(() => {
         API.getServices().then((res) => {

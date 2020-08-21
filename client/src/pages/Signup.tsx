@@ -3,7 +3,7 @@ import { Redirect } from "react-router-dom";
 import useUserState from "../utils/useUserState";
 
 export default function Signup() {
-  const [user, postUser, login, logout] = useUserState();
+  const [user,, login] = useUserState();
   const [pathname, setPathname] = React.useState<string>();
 
   //   async function handleClick(event: React.MouseEvent<HTMLAnchorElement>) {
@@ -14,7 +14,7 @@ export default function Signup() {
   //     setPathname("/");
   //   }
 
-  async function testClick(event: React.MouseEvent<HTMLAnchorElement>) {
+  async function testClick() {
     if (!user) {
       login();
     }
@@ -28,14 +28,14 @@ export default function Signup() {
       <h3>Login to your account</h3>
       <form id="login-form">
         <div className="form-group">
-          <a className="btn btn-outline-dark" role="button" onClick={testClick}>
+          <button className="btn btn-outline-dark" onClick={testClick}>
             <img
               width="20px"
               alt="Google sign-in"
               src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"
             />
             Login with Google
-          </a>
+          </button>
         </div>
         <div className="form-group">
           <label>OR</label>

@@ -1,8 +1,7 @@
-import React, { useEffect, useCallback } from "react";
+import { useEffect, useCallback } from "react";
 import { useRecoilState } from "recoil";
 import { userState, User } from "../recoil/userAtom";
 import API from "../utils/API";
-import { useState } from "react";
 
 export default function useUserState(): [
   User | undefined | false,
@@ -42,7 +41,7 @@ export default function useUserState(): [
       }
     };
     window.addEventListener("message", messageListener);
-    const popupWindow = window.open(
+    window.open(
       "/auth/google",
       "_blank",
       strWindowFeatures

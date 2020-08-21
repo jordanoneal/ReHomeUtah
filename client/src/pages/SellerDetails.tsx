@@ -1,17 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Form, Input, Label, FormGroup, Col, Button, Container } from 'reactstrap';
 import API from "../utils/API";
-import usePathState from "../utils/usePathState";
-import useUserState from "../utils/useUserState";
 import { Redirect } from "react-router";
 import useForceUserLogin from "../utils/useForceUserLogin";
 
-
-
-
-
-export const Seller: React.FC = (props) => {
-    const [user] = useForceUserLogin();
+export const Seller: React.FC = () => {
+    useForceUserLogin();
     const [pathname, setPathname] = React.useState<string>();
     const [years, setYears] = useState<string>("");
     const [months, setMonths] = useState<string>("");
@@ -20,8 +14,7 @@ export const Seller: React.FC = (props) => {
     const [reasonSelling, setReasonSelling] = useState("");
     const [concernsSelling, setConcernsSelling] = useState("");
     const [neededWork, setNeededWork] = useState("");
-    const [pets, setPets] = useState(false);
-    const [petsExplained, setPetsExplained] = useState("");
+    const [pets] = useState(false);
     const [currentLiving, setCurrentLiving] = useState<string>("");
     const [homeFeatures, setHomeFeatures] = useState("");
 

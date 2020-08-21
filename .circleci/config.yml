@@ -1,0 +1,17 @@
+jobs:
+  build:
+    docker:
+      - image: circleci/node:jessie
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm run build
+version: 2.1
+orbs:
+  node: circleci/node@3.0.0
+
+# Orchestrate our job run sequence
+workflows:
+  build_and_test:
+    jobs:
+      - build
