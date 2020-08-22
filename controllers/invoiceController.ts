@@ -1,11 +1,9 @@
 import * as express from "express";
-import { IInvoice } from "../interfaces/invoice";
-import { IInvoiceModel, Invoice } from "../models/invoice";
+import { Invoice } from "../models/invoice";
 
 export default {
     findAll: async function ( req: express.Request, res: express.Response ) {
         const allInvoices = await Invoice.find({});
-        console.log(allInvoices);
         res.json(allInvoices);
     },
     findById: async function ( req: express.Request, res: express.Response ) {

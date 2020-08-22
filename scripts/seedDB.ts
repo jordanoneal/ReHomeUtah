@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
-const { Services, IServicesModel } = require("../models/services");
+import mongoose from 'mongoose';
+import { Services } from "../models/services";
 
 mongoose.connect("//heroku_g72p4k6q:9qe50o7ci3lp8bob9igam6fphn@ds115214.mlab.com:15214/heroku_g72p4k6q" || "mongodb://localhost/rehomeutah", { useNewUrlParser: true });
 

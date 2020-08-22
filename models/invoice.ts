@@ -1,4 +1,4 @@
-import mongoose, { Schema, Document, Model } from "mongoose";
+import mongoose, { Schema, Document } from "mongoose";
 import { IInvoice } from "../interfaces/invoice";
 import { IServicesModel } from "./services";
 import { IUserModel } from "./user";

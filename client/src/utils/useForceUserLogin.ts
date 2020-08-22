@@ -13,7 +13,7 @@ type useForceUserLoginReturnType = [
 export default function useForceUserLogin() : useForceUserLoginReturnType {
     const userState = useUserState();
     const [user] = userState;
-    let history = useHistory();
+    const history = useHistory();
 
     useEffect(() => {
         if(user === false) {

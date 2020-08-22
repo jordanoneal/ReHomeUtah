@@ -1,4 +1,4 @@
-import mongoose, { Schema, Document, Model, SchemaTypes } from "mongoose";
+import mongoose, { Schema, Document } from "mongoose";
 import { ILogin } from "../interfaces/user";
 import * as bcrypt from "bcrypt";
 import { IUserModel } from "./user";

@@ -1,13 +1,9 @@
-import { IServices } from "./services";
-
 export interface IInvoice {
-    user: Object,
+    user: string,
     selectedServices: [
         {
-            serviceId: Object
-            selection?: Number
-            // price: Number
+            serviceId: string
+            selection?: number
         }
     ]
-
 }

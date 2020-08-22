@@ -1,6 +1,6 @@
-const router = require("express").Router();
+import {Router} from 'express';
 import passport from "passport";
-import { resolveSoa } from "dns";
+const router = Router();
 
 // auth with google
 router.get(
@@ -14,7 +14,7 @@ router.get(
 router.get(
   "/google/callback",
   passport.authenticate("google", { failureRedirect: "/login" }),
-  function (req: any, res: any) {
+  function (req, res) {
     res.send(
       "<script>window.opener.postMessage('auth popup closed', '*');window.close();</script>"
     );
@@ -22,10 +22,10 @@ router.get(
 );
 
 // auth logout
-router.get("/logout", function (req: any, res: any) {
+router.get("/logout", function (req, res) {
   req.logout();
   // res.redirect("/login");
   res.send("logged out");
 });
 
-module.exports = router;
+export default router;

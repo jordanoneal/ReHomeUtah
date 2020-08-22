@@ -3,21 +3,26 @@ import path from "path";
 import passport from "passport";
 import mongoose from "mongoose";
 import routes from "./routes";
-require("dotenv").config();
+import dotenv from "dotenv";
+dotenv.config();
 
-const authRoutes = require("./routes/routes");
-const apiRoutes = require("./routes/apiRoutes");
+import authRoutes from "./routes/routes";
+import apiRoutes from "./routes/apiRoutes";
 
 // associate google strategy wih passport object
-const passportSetup = require("./config/passport");
-const session = require("express-session");
-const MongoStore = require("connect-mongo")(session);
+import "./config/passport";
+import session from "express-session";
+import connectMongo from "connect-mongo";
+import cookieParser from "cookie-parser";
+import bodyParser from "body-parser";
+
+const MongoStore = connectMongo(session);
 
 const PORT = process.env.PORT || 3001;
 const app = express();
 
-app.use(require("cookie-parser")());
-app.use(require("body-parser").urlencoded({ extended: true }));
+app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // connect to mongodb
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/rehomeutah", {
@@ -35,7 +40,7 @@ app.use(
   })
 );
 
-var forceSsl = function (
+const forceSsl = function (
   req: express.Request,
   res: express.Response,
   next: () => void
@@ -63,7 +68,6 @@ app.use(routes);
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
-console.log("different");
 
 // Serve up static assets (usually on heroku)
 // if (process.env.NODE_ENV === "production") {

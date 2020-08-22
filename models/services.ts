@@ -1,4 +1,4 @@
-import mongoose, { Schema, Document, Model } from "mongoose";
+import mongoose, { Schema, Document } from "mongoose";
 import { IServices } from "../interfaces/services";
 
 export interface IServicesModel extends IServices, Document {}

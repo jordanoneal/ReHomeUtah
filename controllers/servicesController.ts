@@ -1,11 +1,9 @@
 import * as express from "express";
-import { IServices } from "../interfaces/services";
-import { Services, IServicesModel } from "../models/services";
+import { Services } from "../models/services";
 
 export default {
     findAll: async function ( req: express.Request, res: express.Response ) {
         const allServices = await Services.find({});
-        console.log(allServices);
         res.json(allServices);
     },
     findById: async function ( req: express.Request, res: express.Response ) {
@@ -21,7 +19,6 @@ export default {
             .catch(err => res.status(422).json(err));
     },
     update: async function ( req: express.Request, res: express.Response ) {
-        //     console.log(req.body);
         await Services
             .findOneAndUpdate({ _id: req.params.id }, req.body)
             .then(IServicesModel => res.json(IServicesModel))
