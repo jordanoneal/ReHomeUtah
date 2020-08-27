@@ -2,6 +2,7 @@ import { useEffect, useCallback } from "react";
 import { useRecoilState } from "recoil";
 import { userState, User } from "../recoil/userAtom";
 import API from "../utils/API";
+import { useHistory } from "react-router";
 
 export default function useUserState(): [
   User | undefined | false,
@@ -10,6 +11,7 @@ export default function useUserState(): [
   () => void
 ] {
   const [user, setUser] = useRecoilState(userState);
+  const history = useHistory();
 
   const getUser = useCallback(async () => {
     const { data } = await API.getUser();
@@ -34,10 +36,13 @@ export default function useUserState(): [
   const login = useCallback(async () => {
     const strWindowFeatures =
       "toolbar=no, menubar=no, width=600, height=700, top=100, left=100";
-    const messageListener = (e: MessageEvent) => {
+    const messageListener = async (e: MessageEvent) => {
       if (e.data === "auth popup closed") {
         window.removeEventListener("message", messageListener);
-        getUser();
+        await getUser();
+        history.replace({
+          pathname: (history.location?.state as {nextPathname?: string} | undefined)?.nextPathname || '/'
+        })
       }
     };
     window.addEventListener("message", messageListener);
@@ -46,7 +51,7 @@ export default function useUserState(): [
       "_blank",
       strWindowFeatures
     );
-  }, [getUser]);
+  }, [getUser, history]);
 
   const logout = useCallback(async () => {
     await API.logOut();

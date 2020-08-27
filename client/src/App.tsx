@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import Signup from "./pages/Signup";
+import { LoginPage } from "./pages/LoginPage";
 import AccountInfo from "./pages/AccountInfo";
 import DummyHome from "./pages/Home";
 import DummyNav from "./components/DummyNav";
@@ -24,7 +24,7 @@ function App() {
               <DummyHome />
             </Route>
             <Route exact path="/login">
-              <Signup />
+              <LoginPage />
             </Route>
             <Route exact path="/accountinfo">
               <AccountInfo />

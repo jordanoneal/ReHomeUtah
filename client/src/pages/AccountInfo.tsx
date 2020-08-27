@@ -2,11 +2,9 @@ import React, { useState, useEffect } from "react";
 import { User } from "../recoil/userAtom";
 import useForceUserLogin from "../utils/useForceUserLogin";
 import "../styles/AccountInfo.css";
-import { Redirect } from "react-router";
 
 function AccountInfo() {
   // const pathname = usePathState();
-  const [pathname, setPathname] = React.useState<string>();
   const [user, postUser] = useForceUserLogin();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -30,13 +28,13 @@ function AccountInfo() {
     }
   }, [user]);
 
-  const submitAccountInfo = (event: any) => {
+  const submitAccountInfo = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     postUser(
       new User({
-        _id: user!._id,
+        _id: user?._id,
         firstName: firstName,
-        email: user!.email,
+        email: user?.email || "",
         lastName: lastName,
         address: address,
         zipCode: zipCode,
@@ -45,11 +43,9 @@ function AccountInfo() {
         phoneNumber: phoneNumber,
       })
     );
-    setPathname("/sellersdetails")
   };
 
-  return pathname ? (<Redirect to ={pathname} />) :(
-    <form onSubmit={submitAccountInfo}>
+  return <form onSubmit={submitAccountInfo}>
       <div className="form-group">
         <label htmlFor="formGroupExampleInput">First name</label>
         <input
@@ -158,7 +154,6 @@ function AccountInfo() {
         Submit
       </button>
     </form>
-  );
 }
 
 // function AccountInfo() {
