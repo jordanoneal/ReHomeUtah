@@ -1,7 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import API from "../utils/API";
 import useForceUserLogin from "../utils/useForceUserLogin";
 import { Redirect } from "react-router";
+import {
+  Form,
+  Input,
+  Label,
+  FormGroup,
+  Col,
+  Button,
+  Container,
+} from "reactstrap";
 
 export default function DummySellersDetails() {
   useForceUserLogin();
@@ -43,7 +52,9 @@ export default function DummySellersDetails() {
     setPathname("/confirmation");
   };
 
-  return (
+  return pathname ? (
+    <Redirect to={pathname} />
+  ) : (
     <div>
       <form onSubmit={handleSumbmit}>
         <div className="form-group">
@@ -105,6 +116,56 @@ export default function DummySellersDetails() {
             onChange={(event) => setNeededWork(event.target.value)}
           ></textarea>
         </div>
+
+        <FormGroup>
+          <Label for="exampleSelectMulti">
+            How many people are currently living in the home?
+          </Label>
+          <Input
+            type="select"
+            name="selectMulti"
+            id="exampleSelectMulti"
+            onChange={(event) => setCurrentLiving(event.target.value)}
+            multiple
+          >
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+            <option>11</option>
+            <option>12</option>
+            <option>13</option>
+            <option>14</option>
+            <option>15</option>
+            <option>16</option>
+            <option>17</option>
+            <option>18</option>
+            <option>19</option>
+            <option>20</option>
+          </Input>
+        </FormGroup>
+        <FormGroup>
+          <Label for="exampleSellingReason">Any pets? (explain)</Label>
+          <Input type="textarea" name="text" id="exampleSellingReason" />
+        </FormGroup>
+        <FormGroup>
+          <Label for="exampleSellingReason">
+            What will potential buyers like most about your home?
+          </Label>
+          <Input
+            type="textarea"
+            name="text"
+            id="exampleSellingReason"
+            onChange={(event) => setHomeFeatures(event.target.value)}
+          />
+        </FormGroup>
+
         <button className="btn" type="submit">
           Submit
         </button>
