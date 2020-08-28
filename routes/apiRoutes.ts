@@ -1,15 +1,16 @@
 import { Seller } from "../models/sellerDetails";
 import {Router} from 'express';
+import {User} from "../models/user";
 
 const router = Router();
 
-// router.post("/saveuser", async (req, res) => {
-//   const data = await User.findByIdAndUpdate(req.body._id, req.body);
-//   console.log(`body:`, req.body);
-//   res.json({
-//     msg: "received data",
-//   });
-// });
+router.post("/saveuser", async (req, res) => {
+  const data = await User.findByIdAndUpdate(req.body._id, req.body);
+  console.log(`body:`, req.body);
+  res.json({
+    msg: "received data",
+  });
+});
 
 // get user data
 router.get("/user", (req, res) => {
