@@ -31,20 +31,20 @@ router.post("/savesellersdetails", async (req, res) => {
   });
 });
 
-// // get sellers details
-// router.get("/sellersdetails", async (req, res) => {
-//   console.log("getting sellers data");
-//   res.send(req.body)
-// })
-
+// get sellers details
 router.get("/sellersdetails", async (req, res) => {
-  Seller.find({}, (error, data) => {
-    if (error) {
-      res.send(error);
-    } else {
-      res.json(data);
-    }
-  });
-});
+  console.log("getting sellers data");
+  res.send(req.body)
+})
+
+// router.get("/sellersdetails", async (req, res) => {
+//   Seller.find({}, (error, data) => {
+//     if (error) {
+//       res.send(error);
+//     } else {
+//       res.json(data);
+//     }
+//   });
+// });
 
 export default router;
