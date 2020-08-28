@@ -45,7 +45,9 @@ function AccountInfo() {
     setPathName("/sellersdetails");
   };
 
-  return pathname ? (<Redirect to ={pathname} />) : (
+  return pathname ? (
+    <Redirect to={pathname} />
+  ) : (
     <form onSubmit={submitAccountInfo}>
       <div className="form-group">
         <label htmlFor="formGroupExampleInput">First name</label>

@@ -8,5 +8,6 @@ export default {
   logIn: () => axios.get("/auth/google"),
   logOut: () => axios.get("/auth/logout"),
   getServices: () => axios.get("/api/services"),
-  postSeller: (seller: ISellerDetails) => axios.post("/api/savesellerdetails", seller)
+  // postSeller: (seller: ISellerDetails) => axios.post("/api/savesellerdetails", seller)
+  postSeller: (seller: ISellerDetails) => axios.post("/api/savesellersdetails", seller),
 };

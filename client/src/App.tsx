@@ -9,6 +9,7 @@ import { RecoilRoot } from "recoil";
 import { BuildYourPlan } from "./pages/BuildYourPan";
 import SellerDetails from "./pages/SellerDetails";
 import Confirmation from "./pages/Confirmation";
+import DummySellersDetails from "./pages/DummySellerDetails";
 
 function App() {
   return (
@@ -33,7 +34,7 @@ function App() {
               <BuildYourPlan></BuildYourPlan>
             </Route>
             <Route exact path="/sellersdetails">
-            <SellerDetails />
+            <DummySellersDetails />
             </Route>
             <Route exact path="/confirmation">
               <Confirmation/>
