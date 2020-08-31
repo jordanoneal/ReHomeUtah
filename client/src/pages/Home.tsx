@@ -16,14 +16,6 @@ export default function DummyHome() {
     }
   }, [user]);
 
-  // function handleClick(event: React.MouseEvent<HTMLButtonElement>) {
-  //   if(!user) {
-  //     login();
-  //   } else {
-  //     logout();
-  //   }
-  // }
-
   return (
     <div>
       <h2>Welcome {firstName}</h2>

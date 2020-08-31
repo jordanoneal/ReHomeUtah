@@ -30,7 +30,7 @@ export const UserSchema = new Schema<IUserModel>({
     type: String,
   },
   referrer: {
-    type: String,
+    type: Boolean,
   },
 });
 

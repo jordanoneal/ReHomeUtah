@@ -39,7 +39,7 @@ export const SellerSchema = new Schema<ISellerDetailsModel>({
     type: Number,
   },
   pets: {
-    type: Boolean,
+    type: String,
   },
   explainPets: {
     type: String,

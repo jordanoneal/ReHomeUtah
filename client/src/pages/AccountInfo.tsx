@@ -2,10 +2,9 @@ import React, { useState, useEffect } from "react";
 import { User } from "../recoil/userAtom";
 import useForceUserLogin from "../utils/useForceUserLogin";
 import "../styles/AccountInfo.css";
-import { Redirect } from "react-router";
+import { useHistory } from "react-router-dom";
 
 function AccountInfo() {
-  const [pathname, setPathName] = React.useState<string>();
   const [user, postUser] = useForceUserLogin();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -14,6 +13,8 @@ function AccountInfo() {
   const [refferer, setRefferer] = useState("");
   const [city, setCity] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
+
+  const history = useHistory();
 
   useEffect(() => {
     if (user) {
@@ -42,12 +43,10 @@ function AccountInfo() {
         phoneNumber: phoneNumber,
       })
     );
-    setPathName("/sellersdetails");
+    history.push("sellersdetails");
   };
 
-  return pathname ? (
-    <Redirect to={pathname} />
-  ) : (
+  return (
     <form onSubmit={submitAccountInfo}>
       <div className="form-group">
         <label htmlFor="formGroupExampleInput">First name</label>
@@ -138,7 +137,8 @@ function AccountInfo() {
             type="radio"
             name="inlineRadioOptions"
             id="inlineRadio1"
-            value="option1"
+            value="yes"
+            onChange={(event) => setRefferer(event.target.value)}
           ></input>
           <label className="form-check-label">Yes</label>
         </div>
@@ -148,7 +148,8 @@ function AccountInfo() {
             type="radio"
             name="inlineRadioOptions"
             id="inlineRadio2"
-            value="option2"
+            value="no"
+            onChange={(event) => setRefferer(event.target.value)}
           ></input>
           <label className="form-check-label">No</label>
         </div>

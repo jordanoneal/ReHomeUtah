@@ -10,7 +10,7 @@ export interface ISellerDetails {
   neededWork: string; // changed from boolean to string
   explainWork?: string;
   currentLiving: number;
-  pets: boolean;
+  pets: string;
   explainPets?: string;
   homeFeatures: string;
 }
