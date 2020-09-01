@@ -1,105 +1,70 @@
 import mongoose from 'mongoose';
 import { Services } from "../models/services";
 
-mongoose.connect("//heroku_g72p4k6q:9qe50o7ci3lp8bob9igam6fphn@ds115214.mlab.com:15214/heroku_g72p4k6q" || "mongodb://localhost/rehomeutah", { useNewUrlParser: true });
+mongoose.connect(/* "//heroku_g72p4k6q:9qe50o7ci3lp8bob9igam6fphn@ds115214.mlab.com:15214/heroku_g72p4k6q" ||  */"mongodb://localhost/rehomeutah", { useNewUrlParser: true });
 
 const ServicesSeed = [
   {
     serviceName: "MLS Listing",
     explanation: "Your home will show up on over 100 listing websites (including Zillow, Trulia and Redfin).",
     pricing: {
-      Included: {
-        description:
-          "This service is included in the base price of two percent (2%) of the sale of the home.",
-        price: "(Included in 2% Base Price)",
-      },
+      Included: true,
     },
   },
   {
     serviceName: "Professional Photos",
     explanation: "Like dating, first impressions are important when selling your home. We give your home's first impression the competitive edge by using the best photographer in the business.",
     pricing: {
-      Included: {
-        description:
-          "This service is included in the base price of two percent (2%) of the sale of the home.",
-        price: "(Included in 2% Base Price)",
-      },
+      Included: true,
     },
   },
   {
     serviceName: "Market Analysis to Accurately Price Your Home",
     explanation: "Pricing your home correctly is crucial. No ifs, ands or buts. We do a full-market analysis around your property's criteria to ensure your home is priced right.",
     pricing: {
-      Included: {
-        description: "This servic is included in the base price of two percent (2%) of the sale of the home.",
-        price: "(Included in 2% Base Price)"
-      }
+      Included: true
     }
   },
   {
     serviceName: "Document Management",
     explanation: "Nobody likes paperwork. We'll take care of it for you.",
     pricing: {
-      Included: {
-        description:
-          "This service is included in the base price of two percent (2%) of the sale of the home.",
-        price: "(Included in 2% Base Price)",
-      },
+      Included: true,
     },
   },
   {
     serviceName: "Present/Interpret Offers",
     explanation: "We’re in your corner and will make you a savvy homeseller, giving you confidence during your negotiations.",
     pricing: {
-      Included: {
-        description:
-          "This service is included in the base price of two percent (2%) of the sale of the home.",
-        price: "(Included in 2% Base Price)",
-      },
+      Included: true,
     },
   },
   {
     serviceName: "Coordinate with other Parties Involved in Your Transaction",
     explanation: "There are a lot of people involved in a Real Estate transaction (title representitives, lenders, inspectors, etc). We coordinate with them so you don't have to.",
     pricing: {
-      Included: {
-        description:
-          "This service is included in the base price of two percent (2%) of the sale of the home.",
-        price: "(Included in 2% Base Price)",
-      },
+      Included: true,
     },
   },
   {
     serviceName: "On Call Support",
     explanation: "Call me, maybe?",
     pricing: {
-      Included: {
-        description:
-          "This service is included in the base price of two percent (2%) of the sale of the home.",
-        price: "(Included in 2% Base Price)",
-      },
+      Included: true,
     },
   },
   {
     serviceName: "Lighted Yard Sign",
     explanation: "Our yard signs have solar-powered lights that get the night crowd's attention.",
     pricing: {
-      Included: {
-        description:
-          "This service is included in the base price of two percent (2%) of the sale of the home.",
-        price: "(Included in 2% Base Price)",
-      },
+      Included: true,
     },
   },
   {
     serviceName: "Open House Events",
     explanation: "We prepare days in advance for our massive open house events. They’re basically giant house parties — but you're not invited... sorry.",
     pricing: {
-      Included: {
-        description:
-          "This service is included in the base price of two percent (2%) of the sale of the home.",
-        price: "(Included in 2% Base Price)",
-      },
+      Included: true,
     },
   },
   {
@@ -111,6 +76,7 @@ const ServicesSeed = [
         max: 50,
         increment: 1,
         unitPrice: 40,
+        unitName: "Photo(s)"
       },
     },
   },
@@ -120,19 +86,19 @@ const ServicesSeed = [
     pricing: {
       Options: [
           {
-            description: "Up to 2500 sq ft = $180",
+            description: "Up to 2500 sq ft",
             price: 180,
           },
           {
-            description: "2500-3900 Sq ft = $280",
+            description: "2500-3900 Sq ft",
             price: 280,
           },
           {
-            description: "4000-6400 sq ft = $380",
+            description: "4000-6400 sq ft",
             price: 380,
           },
           {
-            description: "6500-8900 sq ft = $480",
+            description: "6500-8900 sq ft",
             price: 480
           }
         ]
@@ -143,10 +109,9 @@ const ServicesSeed = [
     explanation: "Target prospective buyers by their age, income, and location on social media by funding a special ad about your home. The more money you put into it, the more views you get.",
     pricing: {
       Incremental: {
-        min: 5,
-        max: 50,
-        increment: 1,
-        unitPrice: 10,
+        min: 50,
+        max: 500,
+        increment: 10
       },
     },
   },
@@ -184,6 +149,7 @@ const ServicesSeed = [
         max: 30,
         increment: 1,
         unitPrice: 90,
+        unitName: "Room(s)"
       },
     },
   },
@@ -196,6 +162,7 @@ const ServicesSeed = [
         max: 30,
         increment: 1,
         unitPrice: 90,
+        unitName: "Room(s)"
       },
     },
   },
@@ -208,6 +175,7 @@ const ServicesSeed = [
         max: 30,
         increment: 1,
         unitPrice: 90,
+        unitName: "Room(s)"
       },
     },
   },
@@ -229,15 +197,15 @@ const ServicesSeed = [
     pricing: {
       Options: [
           {
-            description: "1000 Flyers = $0.60/Flyer",
+            description: "1000 Flyers - $0.60/Flyer",
             price: 600,
           },
           {
-            description: "2500 Flyers = $0.45/Flyer",
+            description: "2500 Flyers - $0.45/Flyer",
             price: 1000,
           },
           {
-            description: "5000 Flyers = $0.39/Flyer",
+            description: "5000 Flyers - $0.39/Flyer",
             price: 1950
           }
         ]

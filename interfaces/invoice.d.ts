@@ -1,9 +1,9 @@
 export interface IInvoice {
-    user: string,
-    selectedServices: [
-        {
-            serviceId: string
-            selection?: number
-        }
-    ]
+    user: string;
+    selectedServices: ISelectedService[];
+}
+
+export interface ISelectedService {
+    serviceId: string;
+    selection?: number;
 }

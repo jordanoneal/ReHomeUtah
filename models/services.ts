@@ -25,18 +25,28 @@ export const ServicesSchema = new Schema<IServicesModel>({
             }
         }],
         Incremental: {
-            min: Number,
-            max: Number,
-            increment: Number,
+            min: {
+                type: Number,
+                required: true
+            },
+            max: {
+                type: Number,
+                required: true
+            },
+            increment: {
+                type: Number,
+                required: true
+            },
             unitPrice: Number,
+            unitName: String
         },
         Flat: {
-            price: Number,
+            price: {
+                type: Number,
+                requeired: true
+            }
         },
-        Included: {
-            description: String,
-            price: String,
-        },
+        Included: Boolean,
     }
 });
 

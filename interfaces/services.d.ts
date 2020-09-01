@@ -15,7 +15,7 @@ export type IOptionsPricing = IServicePricingOption[];
 
 export interface IServicePricingOption {
   description: string
-  price: string
+  price: number
   // Price may have to revert back to string
 }
 
@@ -23,15 +23,13 @@ export interface IIncrementalPricing {
   min: number
   max: number
   increment: number
-  unitPrice: number
+  unitPrice?: number
+  unitName?: string
 }
 
 export interface IFlatPricing {
   price: number
 }
 
-export interface IIncludedPricing {
-  description: string
-  price: string
-}
+export type IIncludedPricing = boolean
 
