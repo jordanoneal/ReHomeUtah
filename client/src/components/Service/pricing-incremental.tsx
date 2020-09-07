@@ -10,7 +10,7 @@ export interface PricingIncrementalProps {
 }
 
 export const PricingIncremental: React.FC<PricingIncrementalProps> = (props: PricingIncrementalProps) => {
-    const {incremental: {min, max, increment, unitPrice}, onSelectionChange, selection} = props;
+    const {incremental: {min, max, increment, unitPrice, unitName}, onSelectionChange, selection} = props;
 
     const genIncOpts = () => {
       let unitCount: number;
@@ -23,13 +23,14 @@ export const PricingIncremental: React.FC<PricingIncrementalProps> = (props: Pri
       return incOptionsArr.map((count) => {
         const value = count * (unitPrice || 1)
         return (
-          <option key={count} value={count}>{`${unitPrice ? count + ' at ' : ''}${formatUSD(value)}`}</option>
+          <option key={count} value={count}>{`${unitPrice ? count + ' for ' : ''}${formatUSD(value)}`}</option>
         );
       });
     };
 
     return (
-      <FormGroup>
+      <FormGroup style={{display: 'flex', alignItems: 'center'}}>
+        {unitName ? unitName + ': ' : ''}
         <Input style={{
             border: "1px solid grey"
         }}
@@ -37,7 +38,7 @@ export const PricingIncremental: React.FC<PricingIncrementalProps> = (props: Pri
           onChange={(e) => onSelectionChange(Number(e.currentTarget.value))}
           value={selection}
         >
-            <option key={-1} value={-1}>Select an Option</option>
+            <option key={-1} value={-1}>None Selected</option>
             {genIncOpts()}
         </Input>
       </FormGroup>

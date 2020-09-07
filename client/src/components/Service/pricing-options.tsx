@@ -23,7 +23,7 @@ export const PricingOptions: React.FC<PricingOptionsProps> = (props: PricingOpti
             type="select"
             value={selection}
         >
-            <option key={-1} value={-1}>Select an Option</option>
+            <option key={-1} value={-1}>None Selected</option>
             {/* loop through the array of options and generate a new option for each one */}
             {options.map((option, index) => {
                 return (

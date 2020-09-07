@@ -10,6 +10,7 @@ import {
     Col,
     ListGroup,
     Button,
+    ListGroupItem,
 } from "reactstrap";
 
 export const BuildYourPlan = () => {
@@ -28,27 +29,42 @@ export const BuildYourPlan = () => {
 
     return (
         <Suspense fallback={<div>Loading...</div>}>
-            <PlanJumbotron></PlanJumbotron>
-            <br></br>
-            <Row>
-                <Col xs={12}>
-                    {/* <Container classname=“themed-container”> */}
-                    <Container className="themed-container" >
-                        <ListGroup style={{ whiteSpace: "pre" }}>{services.map(service => {
-                            return <Service key={service._id} service={service} />
-                        })}
-                        </ListGroup>
-                    </Container>
-                </Col>
-            </Row>
-
-            <Row>
-                <Col xs={12}>
-                    <Link to="/accountinfo">
-                        <Button color="primary"> Save and Continue </Button>
-                    </Link>
-                </Col>
-            </Row>
+                <PlanJumbotron></PlanJumbotron>
+                <br></br>
+                <Row>
+                    <Col xs={12}>
+                        {/* <Container classname=“themed-container”> */}
+                        <Container className="themed-container" >
+                            <ListGroup style={{ whiteSpace: "pre" }}>
+                                <ListGroupItem style={{background: "#2e472a", color: "white"}}>
+                                    <h2>Included</h2>
+                                    <p>2% of selling price (Up to 2500 Sq. Ft)</p>
+                                </ListGroupItem>
+                                {services.filter(s => s.pricing.Included).map(service => {
+                                    return <Service key={service._id} service={service} />
+                                })}
+                            </ListGroup>
+                            <br></br>
+                            <ListGroup style={{ whiteSpace: "pre" }}>
+                                <ListGroupItem>
+                                    <h2>Optional Services</h2>
+                                </ListGroupItem>
+                                {services.filter(s => !s.pricing.Included).map(service => {
+                                    return <Service key={service._id} service={service} />
+                                })}
+                            </ListGroup>
+                        </Container>
+                    </Col>
+                </Row>
+                <br/>
+                <Row>
+                    <Col xs={12}>
+                        <Link to="/accountinfo">
+                            <Button color="primary"> Save and Continue </Button>
+                        </Link>
+                    </Col>
+                </Row>
+                <br/>
         </Suspense>
     )
 }

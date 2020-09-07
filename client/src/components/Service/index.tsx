@@ -1,20 +1,19 @@
 import React, {useCallback} from "react";
 import {
   ListGroupItem,
-  CustomInput,
   FormGroup,
   Button,
   UncontrolledPopover,
   PopoverBody,
-  Row,
-  Col,
+  CustomInput,
 } from "reactstrap";
 import { IServicesModel } from "../../../../models/services";
-import "./style.css";
+import styles from "./style.module.css";
 import { PricingOptions } from "./pricing-options";
 import { PricingIncremental } from "./pricing-incremental";
 import { useServiceSelection } from "../../utils/useServiceSelection";
 import formatUSD from "../../utils/format-usd";
+import classNames from "classnames";
 
 export interface ServiceProps {
   service: IServicesModel;
@@ -29,7 +28,16 @@ export const Service = (props: ServiceProps) => {
   const { Flat, Incremental, Options } = pricing;
   let PricingElement = null;
   if (Flat) {
-    PricingElement = <FormGroup>{formatUSD(Flat.price)}</FormGroup>;
+    const checkboxId = `${_id.split(" ").join("")}Checkbox`;
+    PricingElement = <FormGroup>
+      <CustomInput
+        type="checkbox"
+        id={checkboxId}
+        checked={pricing.Included ? true : selected}
+        onClick={() => setServiceSelection({selected: !selected, serviceId: _id})}
+        readOnly={!!pricing.Included}
+      >{formatUSD(Flat.price)}</CustomInput>
+    </FormGroup>;
   } else if (Options && Options.length > 0) {
     PricingElement = ( 
       <PricingOptions
@@ -47,36 +55,30 @@ export const Service = (props: ServiceProps) => {
       />
     );
   }
-  const checkboxId = `${_id.split(" ").join("")}Checkbox`;
   const popoverId = `id${_id.split(" ").join("")}Popover`;
   return (
     <ListGroupItem
       style={{
-        background: pricing.Included ? "lawngreen" : undefined,
+        background: pricing.Included ? "#2e472a" : undefined,
+        color: pricing.Included ? 'white' : undefined
       }}
     >
-      <Row className="align-items-center">
-        <CustomInput
-          type="checkbox"
-          id={checkboxId}
-          checked={pricing.Included ? true : selected}
-          onClick={() => setServiceSelection({selected: !selected, serviceId: _id})}
-          readOnly={!!pricing.Included}
-        ></CustomInput>
-        <Col xs="auto">
-          <Button
+      <div className={styles.item}>
+        <div className={styles.itemTitle}>
+          <div
             id={popoverId}
-            style={{
-              background: "transparent",
-              color: "dodgerblue",
-              border: "none",
-            }}
+            className={styles.iButton}
+            tabIndex={-1}
           >
-            <i className="fas fa-info-circle"></i>
-          </Button>
-        </Col>
-        <Col xs={3}>{serviceName}</Col>
-        <Col sx={3}>{PricingElement}</Col>
+            {/* trick to force the "i" in thie info icon to be white. */}
+            <div className={styles.iWhiteBoxBackground}/>
+            <i className={classNames("fas fa-info-circle", styles.i)}></i>
+            {/* this <i> tag is to fill the size of the element since the other two elements are absolute positioning and don't take up space. */}
+            <i className={"fas fa-info-circle"}></i>
+          </div>
+          <div className={styles.serviceName}>{serviceName}</div>
+        </div>
+        {PricingElement}
         <UncontrolledPopover
           trigger="focus"
           placement="bottom"
@@ -84,7 +86,7 @@ export const Service = (props: ServiceProps) => {
         >
           <PopoverBody>{explanation}</PopoverBody>
         </UncontrolledPopover>
-      </Row>
+      </div>
     </ListGroupItem>
   );
 };

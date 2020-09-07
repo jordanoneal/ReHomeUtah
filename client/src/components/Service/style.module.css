@@ -1,0 +1,61 @@
+.boxShadow {
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 2px 2px 5px;
+}
+
+.iWhiteBoxBackground {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    background: white;
+    width: 10px;
+    height: 10px;
+}
+
+.i {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    user-select: none;
+    flex-wrap: wrap;
+}
+
+@media(max-width: 575px) {
+    .item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+.item>*:not(:last-child) {
+    margin-bottom: 1em;
+    margin-right: 1em;
+}
+
+.iButton {
+    cursor: pointer;
+    background: transparent;
+    color: dodgerblue;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-right: 1em;
+    margin-top: 3px;
+}
+
+.itemTitle {
+    display: flex;
+    align-items: top;
+    overflow: hidden;
+}
+
+.serviceName {
+    white-space: pre-wrap;
+    text-align: start;
+}
