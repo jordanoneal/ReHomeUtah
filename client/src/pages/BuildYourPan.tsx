@@ -36,7 +36,7 @@ export const BuildYourPlan = () => {
                         {/* <Container classname=“themed-container”> */}
                         <Container className="themed-container" >
                             <ListGroup style={{ whiteSpace: "pre" }}>
-                                <ListGroupItem style={{background: "#2e472a", color: "white"}}>
+                                <ListGroupItem style={{background: "#3f7521", color: "white"}}>
                                     <h2>Included</h2>
                                     <p>2% of selling price (Up to 2500 Sq. Ft)</p>
                                 </ListGroupItem>

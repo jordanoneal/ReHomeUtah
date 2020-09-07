@@ -59,7 +59,7 @@ export const Service = (props: ServiceProps) => {
   return (
     <ListGroupItem
       style={{
-        background: pricing.Included ? "#2e472a" : undefined,
+        background: pricing.Included ? "#3f7521" : undefined,
         color: pricing.Included ? 'white' : undefined
       }}
     >
@@ -74,7 +74,7 @@ export const Service = (props: ServiceProps) => {
             <div className={styles.iWhiteBoxBackground}/>
             <i className={classNames("fas fa-info-circle", styles.i)}></i>
             {/* this <i> tag is to fill the size of the element since the other two elements are absolute positioning and don't take up space. */}
-            <i className={"fas fa-info-circle"}></i>
+            <i className={"fas fa-info-circle"} style={{opacity: 0}}></i>
           </div>
           <div className={styles.serviceName}>{serviceName}</div>
         </div>
