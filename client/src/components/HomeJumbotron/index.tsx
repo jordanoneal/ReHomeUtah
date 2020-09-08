@@ -1,32 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./style.css";
-import { Button, Jumbotron } from "reactstrap";
+import styles from "./style.module.css";
+import { Jumbotron } from "../jumbotron";
+import { Button } from "reactstrap";
+import classNames from "classnames";
 
 const HomeJumbotron = () => {
   return (
-    <Jumbotron className="homeJumbotron">
-      <h1 className="display-3">
-        There is a problem with the way real estate is being done.
-      </h1>
-      <p className="display-5">
-        No one wants to awkwardly haggle with a realtor over the pricing of
-        services. Your home is as unique as you are, so why shouldn't your
-        home's marketing plan be personalized to fit you, too?
-      </p>
-      <hr className="my-2" />
-      <p className="lead">
-        At Cole Tanner Real Estate of Salt Lake City, we know one size doesn't
-        fit all. That's why we make it easy for you to choose the perfect
-        marketing plan for you while providing you with excellent service and
-        transparency.
-      </p>
-      <p className="lead">
-        {/* onclick={} */}
+    <Jumbotron img="/assets/images/Key-with-keychain-in-a-house-shape-and-family-in-the-door-keyhole...60677_3797x2531.jpeg" imageStyles={styles.image} containerStyles={styles.container}>
+      <h2 className={classNames("display-4", styles.header)}>Start your adventure!</h2>
+      <p className={classNames("lead", styles.subHeader)}>order services today.</p>
+      <div className={styles.buttons}>
         <Link to="/buildyourplan">
-          <Button color="success">Build a Plan to Learn More</Button>
+          <Button color="success">Sell <span className={styles.buttonExtra}>a Home</span></Button>
         </Link>
-      </p>
+        <Link to="/buyerdetails">
+          <Button color="success">Buy <span className={styles.buttonExtra}>a Home</span></Button>
+        </Link>
+      </div>
     </Jumbotron>
   );
 };
