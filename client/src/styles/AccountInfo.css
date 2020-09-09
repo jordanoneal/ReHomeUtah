@@ -4,16 +4,27 @@ form {
   padding: 15px;
   margin: auto;
   height: 100%;
-  background-color: grey;
+  background-color: rgba(224, 224, 224, 0.774);
   border-style: solid;
+  border-width: thin;
 }
 
 label {
-  color: white;
+  color: black;
+  font-size: 15px;
 }
 
 .form-control {
+  background-color: white;
   border-style: solid;
-  border: black;
-  border-width: 5px;
+  border-width: thin;
+  border-color: black;
+}
+
+.btn {
+  background-color: white;
+  border-style: solid;
+  border-width: thin;
+  border-color: black;
+  border-radius: 25px;
 }

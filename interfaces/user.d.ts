@@ -7,7 +7,7 @@ export interface IUser {
   city?: string;
   zipCode?: number;
   phoneNumber?: string;
-  referrer?: string;
+  referrer?: boolean;
   // admin: boolean;
 }
 

@@ -4,12 +4,13 @@ import { userState, User } from "../recoil/userAtom";
 import API from "../utils/API";
 import { useHistory } from "react-router";
 
-export default function useUserState(): [
-  User | undefined | false,
-  (user: User) => void,
-  () => void,
-  () => void
-] {
+export interface UserStateData {
+  user: User | undefined | false;
+  postUser(user: User): void;
+  googleLogin(): void;
+  logout(): void;
+}
+export default function useUserState(): UserStateData {
   const [user, setUser] = useRecoilState(userState);
   const history = useHistory();
 
@@ -33,7 +34,7 @@ export default function useUserState(): [
     [getUser]
   );
 
-  const login = useCallback(async () => {
+  const googleLogin = useCallback(async () => {
     const strWindowFeatures =
       "toolbar=no, menubar=no, width=600, height=700, top=100, left=100";
     const messageListener = async (e: MessageEvent) => {
@@ -58,5 +59,5 @@ export default function useUserState(): [
     getUser();
   }, [getUser]);
 
-  return [user, postUser, login, logout];
+  return {user, postUser, googleLogin, logout};
 }

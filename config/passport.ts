@@ -1,13 +1,14 @@
 import passport from "passport";
-import { Login } from "../models/login";
+import { Login, checkPassword } from "../models/login";
 import { User, IUserModel } from "../models/user";
 import { Schema } from "mongoose";
-import {OAuth2Strategy as GoogleStrategy} from 'passport-google-oauth';
+import { OAuth2Strategy as GoogleStrategy } from "passport-google-oauth";
+import { Strategy as LocalStrategy } from "passport-local";
 
 // needed to fix proxy not being in the interface for whatever reason.
 declare module "passport-google-oauth" {
   interface IOAuth2StrategyOption {
-      proxy?: boolean;
+    proxy?: boolean;
   }
 }
 
@@ -19,6 +20,34 @@ passport.deserializeUser(async function (userId: Schema.Types.ObjectId, done) {
   const user = await User.findById(userId);
   done(null, user);
 });
+
+// telling passport we want to use a Local Strategy
+passport.use(
+  new LocalStrategy(function (email, password, done) {
+    User.findOne({ email: email }, function (err, user) {
+      if (err) {
+        return done(err);
+      }
+      if (!user) {
+        return done(null, false);
+      }
+
+      Login.findOne({
+        user: user._id,
+        provider: "local",
+      }).then((login) => {
+        if (!login) {
+          return done(null, false);
+        }
+
+        if (checkPassword(login, password)) {
+          return done(null, false);
+        }
+        return done(null, user);
+      });
+    });
+  })
+);
 
 passport.use(
   new GoogleStrategy(

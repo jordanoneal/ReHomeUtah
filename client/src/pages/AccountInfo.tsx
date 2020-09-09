@@ -5,7 +5,7 @@ import "../styles/AccountInfo.css";
 import { useHistory } from "react-router-dom";
 
 function AccountInfo() {
-  const [user, postUser] = useForceUserLogin();
+  const {user, postUser} = useForceUserLogin();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [address, setAddress] = useState("");
@@ -109,7 +109,6 @@ function AccountInfo() {
           type="tel"
           className="form-control"
           placeholder="202-555-0193"
-          pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
           name="phone"
           onChange={({ target: { value } }) => setPhoneNumber(value)}
           value={phoneNumber}

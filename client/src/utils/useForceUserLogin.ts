@@ -1,18 +1,14 @@
 import { useEffect } from "react";
-import useUserState from "./useUserState";
+import useUserState, { UserStateData } from "./useUserState";
 import { useHistory } from "react-router-dom";
 import { User } from "../recoil/userAtom";
 
-type useForceUserLoginReturnType = [
-  User | undefined,
-  (user: User) => void,
-  () => void,
-  () => void
-];
-
-export default function useForceUserLogin(): useForceUserLoginReturnType {
+export interface ForcedUserStateData extends UserStateData {
+  user: User | undefined;
+}
+export default function useForceUserLogin(): ForcedUserStateData {
   const userState = useUserState();
-  const [user] = userState;
+  const {user} = userState;
   const history = useHistory();
 
   useEffect(() => {
@@ -26,5 +22,5 @@ export default function useForceUserLogin(): useForceUserLoginReturnType {
     }
   });
 
-  return userState as useForceUserLoginReturnType;
+  return userState as ForcedUserStateData;
 }
