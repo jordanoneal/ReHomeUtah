@@ -3,7 +3,7 @@ import "./App.css";
 import { LoginPage } from "./pages/LoginPage";
 import AccountInfo from "./pages/AccountInfo";
 import HomePage from "./pages/Home";
-import DummyNav from "./components/DummyNav";
+import Nav from "./components/Nav";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { RecoilRoot } from "recoil";
 import { BuildYourPlan } from "./pages/BuildYourPan";
@@ -15,7 +15,7 @@ function App() {
     <div className="App">
       <RecoilRoot>
         <Router>
-          <DummyNav />
+          <Nav />
           <Switch>
             <Route exact path="/">
               <HomePage />

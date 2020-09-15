@@ -1,32 +1,34 @@
 import React from "react";
 import useUserState from "../utils/useUserState";
-import "../styles/Navbar.css";
+import styles from "./Nav.module.css";
 import { Link, useLocation, useHistory } from "react-router-dom";
 
-export default function DummyNav() {
-  const [user, , , logout] = useUserState();
+export default function Nav() {
+  // const [user, , , logout] = useUserState();
   const location = useLocation();
-  const history = useHistory();
+  // const history = useHistory();
 
-  const loginClick = () => {
-    if (!user) {
-      history.push("/login");
-    } else {
-      logout();
-    }
-  };
+  // const loginClick = () => {
+  //   if (!user) {
+  //     history.push("/login");
+  //   } else {
+  //     logout();
+  //   }
+  // };
 
   return (
-    <nav className="navbar navbar-expand-lg">
-      <img
-        src="/assets/images/CTREPresidioLogo.jpeg"
-        alt="Logo"
-        className="navbar-brand"
-      ></img>
+    <nav className={styles.nav}>
+      <div className={styles.logoTab}>
+        <img
+          src="/assets/images/IMG_0827.png"
+          alt="Logo"
+          className={styles.logo}
+        ></img>
+      </div>
 
-      <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul className="navbar-nav mr-auto mt-2 mt-md-0">
-          <li className="nav-item">
+      <div className={styles.navLinkContainer}>
+        <ul className={styles.navLinks}>
+          <li>
             <Link
               to="/"
               className={
@@ -36,7 +38,7 @@ export default function DummyNav() {
               Home
             </Link>
           </li>
-          <li className="nav-item">
+          <li>
             <Link
               to="/about"
               className={
@@ -46,7 +48,7 @@ export default function DummyNav() {
               About
             </Link>
           </li>
-          <li className="nav-item">
+          <li>
             <Link
               to="/buildyourplan"
               className={
@@ -58,7 +60,7 @@ export default function DummyNav() {
               Build a Plan
             </Link>
           </li>
-          <li className="nav-item">
+          <li>
             <Link
               to="/accountinfo"
               className={
@@ -70,7 +72,7 @@ export default function DummyNav() {
               Account Info
             </Link>
           </li>
-          <li className="nav-item">
+          <li>
             <Link
               to="/sellersdetails"
               className={
@@ -83,8 +85,8 @@ export default function DummyNav() {
             </Link>
           </li>
         </ul>
-        <ul className="navbar-nav ml-auto mt-2 mt-md-0">
-          <li className="nav-item">
+        {/* <ul>
+          <li>
             <button
               onClick={loginClick}
               type="button"
@@ -93,7 +95,7 @@ export default function DummyNav() {
               {user ? "Logout" : "Login"}
             </button>
           </li>
-        </ul>
+        </ul> */}
       </div>
     </nav>
   );
