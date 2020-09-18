@@ -20,7 +20,7 @@ export default function Nav() {
     <nav className={styles.nav}>
       <div className={styles.logoTab}>
         <img
-          src="/assets/images/IMG_0827.png"
+          src="/assets/images/ctre-logo-slim.png"
           alt="Logo"
           className={styles.logo}
         ></img>
