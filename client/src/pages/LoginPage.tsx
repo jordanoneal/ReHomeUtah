@@ -3,7 +3,7 @@ import useUserState from "../utils/useUserState";
 import { Link } from "react-router-dom";
 
 export const LoginPage: React.FC = () => {
-  const {user, googleLogin} = useUserState();
+  const { user, googleLogin } = useUserState();
 
   async function testClick(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
@@ -14,7 +14,7 @@ export const LoginPage: React.FC = () => {
 
   return (
     <div>
-      <h3>Login to your account</h3>
+      <h4>Login to your account</h4>
       <form id="login-form">
         <div className="form-group">
           <button className="btn btn-outline-dark" onClick={testClick}>
@@ -34,7 +34,6 @@ export const LoginPage: React.FC = () => {
             id="disabledTextInput"
             className="form-control"
             placeholder="email address *"
-            readOnly
           ></input>
         </div>
         <div className="form-group">
@@ -43,13 +42,17 @@ export const LoginPage: React.FC = () => {
             id="disabledTextInput"
             className="form-control"
             placeholder="password *"
-            readOnly
           ></input>
         </div>
         <button className="btn">Login</button>
       </form>
-      <label>New to us?</label>
-      <Link to="/Signup">Sign up</Link>
+
+      <div>
+        Dont have an account?
+        <Link to="/Signup" className="ml-2">
+          Sign up
+        </Link>
+      </div>
     </div>
   );
 };

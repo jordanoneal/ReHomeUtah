@@ -9,6 +9,7 @@ export interface UserStateData {
   postUser(user: User): void;
   googleLogin(): void;
   logout(): void;
+  signup(email: string, password: string): void;
 }
 export default function useUserState(): UserStateData {
   const [user, setUser] = useRecoilState(userState);
@@ -42,16 +43,14 @@ export default function useUserState(): UserStateData {
         window.removeEventListener("message", messageListener);
         await getUser();
         history.replace({
-          pathname: (history.location?.state as {nextPathname?: string} | undefined)?.nextPathname || '/'
-        })
+          pathname:
+            (history.location?.state as { nextPathname?: string } | undefined)
+              ?.nextPathname || "/",
+        });
       }
     };
     window.addEventListener("message", messageListener);
-    window.open(
-      "/auth/google",
-      "_blank",
-      strWindowFeatures
-    );
+    window.open("/auth/google", "_blank", strWindowFeatures);
   }, [getUser, history]);
 
   const logout = useCallback(async () => {
@@ -59,5 +58,13 @@ export default function useUserState(): UserStateData {
     getUser();
   }, [getUser]);
 
-  return {user, postUser, googleLogin, logout};
+  const signup = useCallback(
+    async (email, password) => {
+      await API.signup(email, password);
+      getUser();
+    },
+    [getUser]
+  );
+
+  return { user, postUser, googleLogin, logout, signup };
 }

@@ -18,7 +18,7 @@ export default function SellerDetails() {
 
   const history = useHistory();
 
-  const handleSumbmit = (event: any) => {
+  const handleSumbmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     API.postSeller({
