@@ -3,6 +3,8 @@
   max-width: 1200px;
   margin: auto;
   position: relative;
+  background: white;
+  min-height: 100vh;
 }
 
 .App-logo {

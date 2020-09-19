@@ -1,0 +1,117 @@
+@navHeight: 80px;
+@mobileNavHeight: 60px;
+@mobileWidth: 700px;
+
+.navPlaceholder {
+    height: @navHeight;
+    @media(max-width: @mobileWidth), (max-height: @mobileWidth) {
+        height: @mobileNavHeight;
+    }
+}
+.nav {
+    background: white;
+    display: flex;
+    position: fixed;
+    align-items: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: @navHeight;
+    padding-left: 20px;
+    z-index: 1000;
+    box-shadow: 0 0 5px rgba(0,0,0,.2);
+    @media(max-width: @mobileWidth), (max-height: @mobileWidth) {
+        padding-left: 0px;
+        height: @mobileNavHeight;
+    }
+}
+
+.logoTab {
+    background: #222;
+    padding: 10px;
+    position: absolute;
+    top: -25px;
+    left: 25px;
+}
+
+.logo {
+    width: 70px;
+    height: 70px;
+    @media(max-width: @mobileWidth), (max-height: @mobileWidth) {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+.navLinkContainer {
+    display: flex;
+    @media(max-width: @mobileWidth), (max-height: @mobileWidth) {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: white;
+        box-shadow: 0 0 5px rgba(0,0,0,.2);
+        height: 0;
+        box-sizing: border-box;
+        overflow: hidden;
+        transition: height 200ms ease-out;
+        &.open {
+            height: 210px;
+        }
+    }
+}
+
+.hamburgerMenu {
+    border: none;
+    background: none;
+    color: black;
+    outline: none !important;
+    transition: color 100ms ease-out;
+    margin-left: auto;
+    display: none;
+    font-size: 2em;
+    padding: 20px;
+    @media(max-width: @mobileWidth), (max-height: @mobileWidth) {
+        display: block;
+    }
+    &:active,&:hover {
+        color: #333;
+    }
+}
+
+.navLinks {
+    display: flex;
+    margin: 0;
+    @media(max-width: @mobileWidth), (max-height: @mobileWidth) {
+        flex-direction: column;
+        padding: 10px;
+    }
+    &>li {
+        list-style-type: none;
+        display: flex;
+        align-items: center;
+    }
+    :global(.nav-link) {
+        color: black;
+        font-size: 1.3em;
+        &:visited {
+            color: black;
+        }
+        &:active {
+            color: black;
+        }
+        position: relative;
+        .border {
+            border-bottom: 2px solid black;
+            color: black;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            transition: width 200ms ease-out;
+        }
+        &:hover .border {
+            width: 100%;
+        }
+    }
+}

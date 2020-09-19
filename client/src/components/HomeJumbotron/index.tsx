@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styles from "./style.module.css";
+import styles from "./style.module.less";
 import { Jumbotron } from "../jumbotron";
 import { Button } from "reactstrap";
 import classNames from "classnames";
