@@ -4,6 +4,10 @@
 
 .header {
     font-size: max(2em, min(10vw, 3.5em));
+    text-align: center;
+}
+.subHeader {
+    text-align: center;
 }
 
 @media(max-width: 450px) {
