@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from "react";
-// import useUserState from "../utils/useUserState";
 import styles from "./Nav.module.less";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import classNames from "classnames";
+import useUserState from "../utils/useUserState";
 
 export default function Nav() {
-  // const [user, , , logout] = useUserState();
+  const {user, logout} = useUserState();
   const location = useLocation();
   const [navOpen, setNavOpen] = useState(false);
-  // const history = useHistory();
+  const history = useHistory();
 
-  // const loginClick = () => {
-  //   if (!user) {
-  //     history.push("/login");
-  //   } else {
-  //     logout();
-  //   }
-  // };
+  const loginClick = () => {
+    if (!user) {
+      history.push("/login");
+    } else {
+      logout();
+    }
+  };
 
   useEffect(() => {
     if (navOpen) {
@@ -51,7 +51,7 @@ export default function Nav() {
         </button>
         <div className={classNames(styles.navLinkContainer, navOpen && styles.open)}>
           <ul className={styles.navLinks}>
-            <li>
+            {/* <li>
               <Link
                 to="/about"
                 className={
@@ -61,7 +61,7 @@ export default function Nav() {
                 About
                 <span className={styles.border}/>
               </Link>
-            </li>
+            </li> */}
             <li>
               <Link
                 to="/buildyourplan"
@@ -71,11 +71,24 @@ export default function Nav() {
                     : "nav-link"
                 }
               >
-                Build a Plan
+                Sell
                 <span className={styles.border}/>
               </Link>
             </li>
             <li>
+              <Link
+                to="/buyersdetails"
+                className={
+                  location.pathname === "/buyersdetails"
+                    ? "nav-link active"
+                    : "nav-link"
+                }
+              >
+                Buy
+                <span className={styles.border}/>
+              </Link>
+            </li>
+            {user && <li>
               <Link
                 to="/accountinfo"
                 className={
@@ -87,32 +100,17 @@ export default function Nav() {
                 Account Info
                 <span className={styles.border}/>
               </Link>
-            </li>
-            <li>
-              <Link
-                to="/sellersdetails"
-                className={
-                  location.pathname === "/sellersdetails"
-                    ? "nav-link active"
-                    : "nav-link"
-                }
-              >
-                Sell
-                <span className={styles.border}/>
-              </Link>
-            </li>
-          </ul>
-          {/* <ul>
+            </li>}
             <li>
               <button
                 onClick={loginClick}
-                type="button"
-                className={user ? "btn-danger" : "btn-success"}
+                className={classNames(user ? styles.logoutBtn : styles.loginBtn, "nav-link")}
               >
                 {user ? "Logout" : "Login"}
+                <span className={styles.border}/>
               </button>
             </li>
-          </ul> */}
+          </ul>
         </div>
       </nav>
     </>
