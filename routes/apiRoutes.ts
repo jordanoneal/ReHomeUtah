@@ -1,11 +1,11 @@
-import { Seller, SellerSchema } from "../models/sellerDetails";
+import { Seller } from "../models/sellerDetails";
 import { Router } from "express";
-import { User } from "../models/user";
+// import { User } from "../models/user";
 
 const router = Router();
 
 router.post("/saveuser", async (req, res) => {
-  const data = await User.findByIdAndUpdate(req.body._id, req.body);
+  // const data = await User.findByIdAndUpdate(req.body._id, req.body);
   console.log(`body:`, req.body);
   res.json({
     msg: "received data",
@@ -19,7 +19,7 @@ router.get("/user", (req, res) => {
 
 // post route for sellers details
 router.post("/savesellersdetails", async (req, res) => {
-  const data = await Seller.create(req.body);
+  // const data = await Seller.create(req.body);
   // if (data) {
   //   res.json({
   //     msg: "received sellers details",

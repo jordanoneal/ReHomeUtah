@@ -1,8 +1,8 @@
 import { Router } from "express";
 import passport from "passport";
 import { IUserModel, User } from "../models/user";
-import { info } from "console";
-import { create } from "domain";
+// import { info } from "console";
+// import { create } from "domain";
 import { createLogin, Login } from "../models/login";
 
 const router = Router();
@@ -34,7 +34,7 @@ router.get("/logout", function (req, res) {
 });
 
 router.post("/login", (req, res, next) => {
-  passport.authenticate("local", (err, user: IUserModel, info) => {
+  passport.authenticate("local", (err, user: IUserModel/* , info */) => {
     if (err) {
       return next(err);
     }
