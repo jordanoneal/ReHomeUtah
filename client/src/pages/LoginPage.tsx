@@ -1,6 +1,7 @@
 import React from "react";
 import useUserState from "../utils/useUserState";
 import { Link } from "react-router-dom";
+import { Form } from "../components/Form";
 
 export const LoginPage: React.FC = () => {
   const { user, googleLogin } = useUserState();
@@ -15,7 +16,7 @@ export const LoginPage: React.FC = () => {
   return (
     <div>
       <h4>Login to your account</h4>
-      <form id="login-form">
+      <Form id="login-form">
         <div className="form-group">
           <button className="btn btn-outline-dark" onClick={testClick}>
             <img
@@ -45,7 +46,7 @@ export const LoginPage: React.FC = () => {
           ></input>
         </div>
         <button className="btn">Login</button>
-      </form>
+      </Form>
 
       <div>
         Dont have an account?

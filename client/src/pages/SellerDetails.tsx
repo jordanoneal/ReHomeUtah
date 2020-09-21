@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import API from "../utils/API";
 import useForceUserLogin from "../utils/useForceUserLogin";
 import { useHistory } from "react-router";
+import { Form } from "../components/Form";
 
 export default function SellerDetails() {
   useForceUserLogin();
@@ -41,7 +42,7 @@ export default function SellerDetails() {
 
   return (
     <div>
-      <form onSubmit={handleSumbmit}>
+      <Form onSubmit={handleSumbmit}>
         <div className="form-group">
           <label>How long have you owned this property?</label>
           <input
@@ -143,7 +144,7 @@ export default function SellerDetails() {
         <button className="btn" type="submit">
           Submit order
         </button>
-      </form>
+      </Form>
     </div>
   );
 }

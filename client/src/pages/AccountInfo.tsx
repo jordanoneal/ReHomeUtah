@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { User } from "../recoil/userAtom";
 import useForceUserLogin from "../utils/useForceUserLogin";
-import "../styles/AccountInfo.css";
 import { useHistory } from "react-router-dom";
+import { Form } from "../components/Form";
 
 function AccountInfo() {
   const {user, postUser} = useForceUserLogin();
@@ -47,7 +47,7 @@ function AccountInfo() {
   };
 
   return (
-    <form onSubmit={submitAccountInfo}>
+    <Form onSubmit={submitAccountInfo}>
       <div className="form-group">
         <label htmlFor="formGroupExampleInput">First name</label>
         <input
@@ -156,7 +156,7 @@ function AccountInfo() {
       <button className="btn" type="submit">
         Submit
       </button>
-    </form>
+    </Form>
   );
 }
 

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { Form } from "../components/Form";
 import API from "../utils/API";
 // import useUserState from "../utils/useUserState";
 
@@ -28,7 +29,7 @@ export default function Signup() {
   return (
     <div>
       <h4>Sign Up</h4>
-      <form onSubmit={submitForm}>
+      <Form onSubmit={submitForm}>
         <div className="form-group">
           <label>Email</label>
           <input
@@ -66,7 +67,7 @@ export default function Signup() {
         <Link to="/login" className="ml-2">
           Login
         </Link>
-      </form>
+      </Form>
     </div>
   );
 }
