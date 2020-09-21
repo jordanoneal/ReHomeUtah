@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Form } from "../components/Form";
-import API from "../utils/API";
+import useUserState from "../utils/useUserState";
 // import useUserState from "../utils/useUserState";
 
 export default function Signup() {
-  // const { user, signup } = useUserState();
+  const { signup } = useUserState();
   const [email, setEmail] = useState("");
   const [password1, setPassword1] = useState("");
   const [password2, setPassword2] = useState("");
@@ -23,7 +23,8 @@ export default function Signup() {
       return;
     }
 
-    API.signup(email, password1).then((res) => console.log(res.data));
+    signup(email, password1);
+    // API.signup(email, password1).then((res) => console.log(res.data));
   };
 
   return (
