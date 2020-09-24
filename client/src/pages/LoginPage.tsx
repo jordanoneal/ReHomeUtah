@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import useUserState from "../utils/useUserState";
 import { Link } from "react-router-dom";
 import { Form } from "../components/Form";
 
 export const LoginPage: React.FC = () => {
   const { user, googleLogin } = useUserState();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   async function testClick(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
@@ -35,6 +37,8 @@ export const LoginPage: React.FC = () => {
             id="disabledTextInput"
             className="form-control"
             placeholder="email address *"
+            onChange={(event) => setEmail(event.target.value)}
+            value={email}
           ></input>
         </div>
         <div className="form-group">
@@ -43,6 +47,8 @@ export const LoginPage: React.FC = () => {
             id="disabledTextInput"
             className="form-control"
             placeholder="password *"
+            onChange={(event) => setPassword(event.target.value)}
+            value={password}
           ></input>
         </div>
         <button className="btn">Login</button>

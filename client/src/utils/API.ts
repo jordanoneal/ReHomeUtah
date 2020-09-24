@@ -9,5 +9,6 @@ export default {
   getServices: () => axios.get("/api/services"),
   // postSeller: (seller: ISellerDetails) => axios.post("/api/savesellerdetails", seller)
   postSeller: (seller: ISellerDetails) => axios.post("/api/savesellersdetails", seller),
-  signup:(email: string, password: string) => axios.post("/auth/signup", {email, password})
+  signup:(email: string, password: string) => axios.post("/auth/signup", {email, password}),
+  logIn: (user: User) => axios.post("/auth/login", user)
 };
