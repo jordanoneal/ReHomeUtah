@@ -10,7 +10,7 @@ export interface UserStateData {
   googleLogin(): void;
   logout(): void;
   signup(email: string, password: string): void;
-  logIn(user: User): void;
+  logIn(email: string, password: string): void;
 }
 export default function useUserState(): UserStateData {
   const [user, setUser] = useRecoilState(userState);
@@ -67,8 +67,8 @@ export default function useUserState(): UserStateData {
     [getUser]
   );
 
-  const logIn = useCallback(async (user) => {
-    await API.logIn(user);
+  const logIn = useCallback(async (email, password) => {
+    await API.logIn(email, password);
     getUser();
   }, [getUser])
 

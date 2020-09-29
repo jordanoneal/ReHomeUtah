@@ -4,23 +4,29 @@ import { Link } from "react-router-dom";
 import { Form } from "../components/Form";
 
 export const LoginPage: React.FC = () => {
-  const { user, googleLogin } = useUserState();
+  const { user, logIn, googleLogin } = useUserState();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  async function testClick(e: React.MouseEvent<HTMLButtonElement>) {
+  async function handleGoogleLogin(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
     if (!user) {
       googleLogin();
     }
   }
 
+  const localLogin = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    logIn(email, password)
+  }
+
+
   return (
     <div>
       <h4>Login to your account</h4>
-      <Form id="login-form">
+      <Form id="login-form" onSubmit={localLogin}>
         <div className="form-group">
-          <button className="btn btn-outline-dark" onClick={testClick}>
+          <button className="btn btn-outline-dark" onClick={handleGoogleLogin}>
             <img
               width="20px"
               alt="Google sign-in"
@@ -51,7 +57,7 @@ export const LoginPage: React.FC = () => {
             value={password}
           ></input>
         </div>
-        <button className="btn">Login</button>
+        <button type="submit" className="btn">Login</button>
       </Form>
 
       <div>

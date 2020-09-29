@@ -36,16 +36,19 @@ router.get("/logout", function (req, res) {
 router.post("/login", (req, res, next) => {
   passport.authenticate("local", (err, user: IUserModel/* , info */) => {
     if (err) {
+      console.log(err);
       return next(err);
     }
     if (user) {
       req.logIn(user, function (err) {
         if (err) {
+          console.log(err);
           return next(err);
         }
         return res.redirect("/api/user");
       });
     } else {
+      console.log("no user found");
       return res.sendStatus(401);
     }
   })(req, res, next);

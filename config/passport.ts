@@ -29,6 +29,7 @@ passport.use(
         return done(err);
       }
       if (!user) {
+        console.log("the user was not found");
         return done(null, false);
       }
 
@@ -37,10 +38,12 @@ passport.use(
         provider: "local",
       }).then((login) => {
         if (!login) {
+          console.log("login was not found");
           return done(null, false);
         }
 
         if (checkPassword(login, password)) {
+          console.log("bad password");
           return done(null, false);
         }
         return done(null, user);
