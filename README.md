@@ -1,4 +1,5 @@
-# Create React Express App
+## Description
+“There is a problem with how real estate is being done. People don't want to awkwardly haggle with their realtor over the pricing of their services. Why shouldn't people be able to choose the marketing plan they want while getting excellent service and transparency? This website is to help people order my services and pick out the marketing plan right for them. It is also meant to help home buyers order services from me online.” - Cole Tanner
 
 ## About This Boilerplate
 
@@ -23,7 +24,3 @@ npm start
 ```
 
 Your app should now be running on <http://localhost:3000>. The Express server should intercept any AJAX requests from the client.
-
-## Deployment (Heroku)
-
-To deploy, simply add and commit your changes, and push to Heroku. As is, the NPM scripts should take care of the rest.
